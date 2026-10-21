@@ -3,892 +3,729 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Barbershop Intake &middot; Acly</title>
-<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<title>Barbershop Intake · Acly</title>
 <style>
 :root{
-  --bg:#090807;--bd:#1e1c1a;--bd2:#2a2724;
-  --ink:#edeae4;--sub:#b8b2aa;--dim:#6a6460;
-  --orange:#f07020;--orange-bg:rgba(240,112,32,.09);
-  --green:#22b86a;--green-bg:rgba(34,184,106,.09);
-  --red:#d93030;--red-bg:rgba(217,48,48,.08);
-  --blue:#5b8bf5;--blue-bg:rgba(91,139,245,.09);
-  --card:#131210;--max:680px;
+  --bg:#F8F7F3;--bd:#E5E2D9;--bd2:#D4CFC1;
+  --ink:#1C1A16;--sub:#5B564B;--dim:#8B8375;
+  --red:#9E3327;--red-bg:rgba(158,51,39,.07);
+  --navy:#1F2A44;--navy-bg:rgba(31,42,68,.06);
+  --card:#FCFBF8;
 }
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
-body{font-family:"Satoshi",system-ui,sans-serif;background:var(--bg);color:var(--ink);
-  -webkit-font-smoothing:antialiased;overflow-x:hidden;
-  min-height:100vh;display:flex;justify-content:center;}
-.page{width:100%;max-width:var(--max);padding:0 16px 80px;}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  line-height:1.45;-webkit-font-smoothing:antialiased;min-height:100vh;
+  display:flex;justify-content:center}
+.tn{font-variant-numeric:tabular-nums}
+.page{width:100%;max-width:480px;padding:0 0 calc(48px + env(safe-area-inset-bottom))}
+.serif{font-family:Cambria,Georgia,serif}
 
-/* HEADER */
-.hdr{display:flex;justify-content:space-between;align-items:center;
-  padding:16px 0 14px;border-bottom:1px solid var(--bd);}
-.brand{font-weight:700;font-size:13px;color:var(--ink);}
+/* ── HEADER ── */
+.mono{width:26px;height:26px;border:1.5px solid var(--ink);display:flex;align-items:center;
+  justify-content:center;font-family:Cambria,Georgia,serif;font-size:15px;color:var(--ink);flex:none}
+.mono.lg{width:44px;height:44px;font-size:26px}
+.hdr{display:flex;justify-content:space-between;align-items:center;padding:13px 16px 11px;border-bottom:1px solid var(--bd)}
+.hdr-l{display:flex;align-items:center;gap:9px}
+.brand{font-weight:700;font-size:13px;font-family:Cambria,Georgia,serif}
+.brand small{display:block;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-weight:500;font-size:8.5px;color:var(--dim);margin-top:.5px}
+.hdr-r{font-size:9px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--dim)}
 
+.body{padding:0 16px}
 
-/* PORTADA */
-.portada{padding:44px 0 36px;border-bottom:1px solid var(--bd);}
-.portada h1{font-size:clamp(26px,5vw,38px);font-weight:700;letter-spacing:-.04em;
-  line-height:1.1;color:var(--ink);margin-bottom:10px;}
-.portada-sub{font-size:12px;color:var(--sub);line-height:1.65;margin-bottom:28px;max-width:460px;}
-.portada-meta{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--bd);}
-.pm{padding:14px 0;}
-.pm+.pm{border-left:1px solid var(--bd);padding-left:16px;}
-.pm-lbl{font-size:8px;color:var(--dim);margin-bottom:4px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;}
-.pm-val{font-weight:700;font-size:15px;letter-spacing:-.03em;line-height:1;color:var(--ink);}
-.pm-val.orange{color:var(--ink);}
-.portada-hint{display:flex;align-items:center;justify-content:center;gap:8px;padding:11px 0;border-top:1px solid var(--bd);}
-.portada-hint span{font-size:9px;font-weight:700;letter-spacing:.3px;text-transform:uppercase;color:var(--dim);}
-.ph-arr{animation:bajar 1.8s ease infinite;}
-.ph-arr svg{width:11px;height:11px;stroke:var(--dim);stroke-width:1.8;fill:none;}
-@keyframes bajar{0%,100%{transform:translateY(0)}60%{transform:translateY(3px)}}
+/* ── COVER ── */
+.cover{padding:22px 0 20px;border-bottom:1px solid var(--bd)}
+.ey{font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--ink);
+  display:flex;align-items:center;gap:6px;margin-bottom:14px}
+.ey::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--ink)}
+.cover h1{font-size:24px;font-weight:700;letter-spacing:-.6px;line-height:1.2}
+.cover p{font-size:12.5px;color:var(--sub);line-height:1.55;margin-top:9px}
+.krow{display:flex;margin-top:16px;border:1px solid var(--bd);background:var(--card)}
+.kc{flex:1;padding:9px 10px}.kc+.kc{border-left:1px solid var(--bd)}
+.kk{font-size:8px;text-transform:uppercase;letter-spacing:.5px;color:var(--dim);font-weight:700}
+.kv{font-size:13px;font-weight:700;margin-top:3px;letter-spacing:-.2px}
 
-/* PROGRESS */
-.prog-wrap{position:sticky;top:0;z-index:100;background:var(--bg);
-  border-bottom:1px solid var(--bd);padding:10px 0;}
-.prog-track{display:flex;gap:4px;margin-bottom:7px;}
-.prog-step{flex:1;height:2px;border-radius:99px;background:var(--bd2);transition:background .4s;}
-.prog-step.done{background:var(--sub);}
-.prog-step.all-done{background:var(--sub);}
-.prog-labels{display:flex;gap:4px;}
-.prog-lbl{flex:1;font-size:8px;font-weight:700;letter-spacing:.03em;text-align:center;
-  color:var(--dim);text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:color .3s;}
-.prog-lbl.active{color:var(--sub);}
-.prog-lbl.done{color:var(--sub);}
-.prog-lbl.all-done{color:var(--sub);}
-.prog-counter{font-size:9px;font-weight:700;color:var(--dim);flex:none;margin-left:10px;}
-.prog-counter.active{color:var(--sub);}
+/* ── PROGRESS ── */
+.prog{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--bd);padding:10px 16px 8px}
+.prog-track{display:flex;gap:3px}
+.pseg{flex:1;height:2px;background:var(--bd)}
+.pseg.done{background:var(--navy)}
+.pseg.seen{background:var(--bd2)}
+.prog-meta{display:flex;justify-content:space-between;margin-top:7px;font-size:8.5px;font-weight:700;
+  letter-spacing:.5px;text-transform:uppercase;color:var(--dim)}
+.prog-meta b{color:var(--ink)}
 
-/* SECTION */
-.section{padding:52px 0 0;}
-.section-num{font-size:8.5px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;
-  color:var(--dim);padding-bottom:10px;border-bottom:1px solid var(--bd);margin-bottom:16px;}
-.section-title{font-weight:700;font-size:clamp(21px,4vw,28px);line-height:1.1;
-  letter-spacing:-.04em;color:var(--ink);margin-bottom:7px;}
-.section-sub{font-size:12px;color:var(--sub);line-height:1.65;margin-bottom:26px;max-width:460px;}
+/* ── SECTIONS ── */
+.sec{padding:26px 0 6px;scroll-margin-top:44px}
+.sec-n{font-size:8.5px;font-weight:700;letter-spacing:.7px;text-transform:uppercase;color:var(--dim);margin-bottom:7px}
+.sec h2{font-size:18px;font-weight:700;letter-spacing:-.4px;line-height:1.25}
+.sec-sub{font-size:11.5px;color:var(--sub);line-height:1.5;margin:5px 0 14px}
+.blk{border:1px solid var(--bd);background:var(--card);padding:13px 13px 3px;margin-bottom:8px}
+.bh{font-size:9px;color:var(--dim);text-transform:uppercase;letter-spacing:.7px;margin-bottom:11px;font-weight:700}
+.note{border:1px solid var(--bd);border-left:2px solid var(--bd2);background:var(--card);
+  padding:10px 12px;font-size:11px;color:var(--sub);line-height:1.5;margin-bottom:8px}
+.note b{color:var(--ink)}
 
-/* INSIGHT */
-.insight{background:var(--card);border:1px solid var(--bd);border-radius:7px;
-  padding:11px 13px;margin-bottom:18px;display:flex;gap:9px;align-items:flex-start;}
-.insight-dot{width:4px;height:4px;border-radius:50%;background:var(--dim);flex:none;margin-top:5px;}
-.insight p{font-size:11.5px;color:var(--sub);line-height:1.6;}
+/* ── FIELDS ── */
+.f{margin-bottom:12px}
+.lbl{display:block;font-size:11px;font-weight:600;color:var(--ink);margin-bottom:5px}
+.lbl span{font-weight:400;color:var(--dim)}
+.hint{font-size:9.5px;color:var(--dim);margin-top:4px;line-height:1.4}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:0 10px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0 8px}
+input.in,select.in,textarea.in{width:100%;background:var(--bg);border:1px solid var(--bd2);border-radius:0;
+  padding:10px 11px;font-size:14px;color:var(--ink);font-family:inherit;outline:none;
+  -webkit-appearance:none;appearance:none}
+select.in{background-image:linear-gradient(45deg,transparent 50%,var(--dim) 50%),linear-gradient(135deg,var(--dim) 50%,transparent 50%);
+  background-position:calc(100% - 15px) 50%,calc(100% - 10px) 50%;background-size:5px 5px;background-repeat:no-repeat;padding-right:28px}
+textarea.in{resize:vertical;min-height:62px;line-height:1.45;font-size:13px}
+.in:focus{border-color:var(--navy)}
+.in::placeholder{color:#B5AE9F}
+.in.big{font-size:20px;font-weight:700;letter-spacing:-.4px;padding:9px 11px}
+.money{position:relative}
+.money::before{content:'$';position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--dim);font-size:13px;pointer-events:none}
+.money .in{padding-left:22px}
+.money .in.big{padding-left:24px}
+.money.big::before{font-size:16px}
 
-/* FIELDS */
-.field{margin-bottom:14px;}
-.field:last-child{margin-bottom:0;}
-.field-row{display:grid;grid-template-columns:1fr 1fr;gap:11px;}
-.field-row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:11px;}
-.field-label{display:block;font-size:9px;font-weight:700;color:var(--sub);
-  letter-spacing:.4px;text-transform:uppercase;margin-bottom:7px;}
-.field-label span{font-weight:500;text-transform:none;font-size:9.5px;color:var(--dim);letter-spacing:0;}
+/* ── OPTIONS (chips, square) ── */
+.opts{display:flex;flex-wrap:wrap;gap:5px}
+.opts.col{flex-direction:column}
+.opt{border:1px solid var(--bd2);background:var(--bg);color:var(--sub);font-family:inherit;font-size:12px;
+  padding:8px 10px;cursor:pointer;text-align:left;border-radius:0;line-height:1.3;
+  -webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.opt.on{border-color:var(--navy);color:var(--ink);background:var(--navy-bg);box-shadow:inset 2px 0 0 var(--navy)}
 
-/* INPUTS */
-.input{width:100%;background:var(--card);border:1px solid var(--bd2);
-  border-radius:8px;padding:12px 13px;font-family:inherit;font-size:14px;
-  color:var(--ink);font-weight:500;outline:none;
-  -webkit-appearance:none;appearance:none;transition:border-color .15s;}
-.input:focus{border-color:var(--sub);}
-.input::placeholder{color:var(--dim);font-weight:400;}
-select.input{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 24 24' fill='none' stroke='%236a6460' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
-  background-repeat:no-repeat;background-position:right 12px center;
-  padding-right:32px;cursor:pointer;}
-select.input option{background:var(--card);color:var(--ink);}
+/* ── ROW TABLES (stacked) ── */
+.row{border-top:1px solid var(--bd);padding:11px 0 0}
+.row:first-of-type{border-top:none;padding-top:0}
+.row-h{display:flex;align-items:center;gap:8px;margin-bottom:7px}
+.row-h .rk{font-size:10px;font-weight:700;color:var(--dim);width:14px;flex:none}
+.row-h .in{flex:1}
+.mini{font-size:8px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--dim);margin-bottom:4px;display:block}
+.row .g3,.row .g2{padding-left:22px}
+.row .in{font-size:13px;padding:8px 9px}
+.row .money .in{padding-left:19px}
+.row .money::before{left:9px;font-size:12px}
+.add{display:block;width:100%;border:1px dashed var(--bd2);background:transparent;color:var(--sub);
+  font-family:inherit;font-size:11px;font-weight:600;padding:9px;margin:4px 0 12px;cursor:pointer}
 
-.input-big{background:transparent;border:none;border-bottom:1px solid var(--bd2);
-  padding:5px 0;font-size:clamp(22px,4vw,30px);font-weight:700;color:var(--ink);
-  width:100%;outline:none;font-family:inherit;letter-spacing:-.04em;transition:border-color .2s;}
-.input-big:focus{border-color:var(--sub);}
-.input-big::placeholder{color:var(--dim);font-size:18px;font-weight:400;}
-.input-big.orange{color:var(--ink);}
-.input-big.orange:focus{border-color:var(--sub);}
-.input-big.orange::placeholder{color:var(--dim);}
-.input-big.green{color:var(--ink);}
-.input-big.green:focus{border-color:var(--sub);}
-.input-big.green::placeholder{color:var(--dim);}
-.input-hint{font-size:10px;color:var(--dim);margin-top:5px;line-height:1.5;}
-.input-hint.orange{color:var(--dim);}
-.input-hint.green{color:var(--dim);}
+/* ── CHECKS ── */
+.chk{font-size:10.5px;line-height:1.45;color:var(--sub);padding:8px 0 10px;border-top:1px solid var(--bd);display:none}
+.chk.show{display:block}
+.chk b{color:var(--ink)}
+.chk.warn b.x{color:var(--red)}
+.err{font-size:10px;color:var(--red);margin-top:4px;display:none}
+.err.show{display:block}
 
-/* BOX */
-.box{background:var(--card);border:1px solid var(--bd);border-radius:8px;padding:13px;}
-.box.orange{background:var(--card);border-color:var(--bd);}
-.box.green{background:var(--card);border-color:var(--bd);}
-.box .field-label{margin-bottom:8px;}
-.box.orange .field-label{color:var(--sub);}
-.box.green .field-label{color:var(--sub);}
+/* ── IMPACT ── */
+.lvl{display:flex;align-items:center;gap:10px}
+.lvl .bars{display:flex;gap:2px;flex:none}
+.lvl .bars i{width:5px;height:10px;background:var(--bd2);display:block}
+.opt.on .bars i.f{background:var(--navy)}
 
-/* CHIPS */
-.chip-grid{display:flex;flex-wrap:wrap;gap:7px;}
-.chip{background:var(--card);border:1px solid var(--bd2);border-radius:7px;
-  padding:9px 13px;font-size:12.5px;font-weight:500;color:var(--sub);
-  cursor:pointer;transition:border-color .12s,color .12s;user-select:none;line-height:1.3;}
-.chip:hover{border-color:var(--sub);color:var(--ink);}
-.chip.on{border-color:var(--sub);color:var(--ink);}
-.chip.on.orange{border-color:var(--sub);color:var(--ink);}
-.chip-open{display:flex;align-items:center;background:var(--card);
-  border:1px solid var(--bd);border-radius:7px;overflow:hidden;transition:border-color .15s;}
-.chip-open:focus-within{border-color:var(--sub);}
-.chip-open-pre{padding:10px 10px 10px 13px;font-size:12.5px;font-weight:600;color:var(--dim);flex:none;white-space:nowrap;}
-.chip-open-in{flex:1;background:transparent;border:none;padding:10px 13px 10px 0;
-  font-family:inherit;font-size:13px;color:var(--ink);outline:none;}
-.chip-open-in::placeholder{color:var(--dim);}
+/* ── RECEIVE ── */
+.recv{padding:26px 0 0;border-top:1px solid var(--bd);margin-top:20px}
+.li{display:flex;gap:10px;padding:10px 0}.li+.li{border-top:1px solid var(--bd)}
+.li .no{width:18px;height:18px;background:rgba(28,26,22,.06);font-size:10px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;flex:none}
+.li .tx{font-size:12px;line-height:1.5;color:var(--sub)}.li .tx b{color:var(--ink)}
 
-/* CV ITEMS */
-.cv-grid{display:flex;flex-direction:column;gap:3px;}
-.cv-item{display:flex;align-items:center;gap:12px;background:var(--card);
-  border:1px solid var(--bd);border-radius:7px;padding:11px 13px;transition:border-color .15s;}
-.cv-item:focus-within{border-color:var(--sub);}
-.cv-dot{width:4px;height:4px;border-radius:50%;background:var(--bd2);flex:none;}
-.cv-label{font-size:12px;font-weight:500;color:var(--sub);flex:1;}
-.cv-label small{font-size:10px;color:var(--dim);}
-.cv-input{width:100px;background:transparent;border:none;border-bottom:1px solid var(--bd2);
-  padding:2px 4px;font-family:inherit;font-size:13px;font-weight:700;color:var(--ink);
-  text-align:right;outline:none;transition:border-color .15s;}
-.cv-input:focus{border-bottom-color:var(--sub);}
-.cv-input::placeholder{color:var(--dim);}
-.cv-otros{flex-wrap:wrap;}
-.cv-otros-desc{flex:1;background:transparent;border:none;border-bottom:1px solid var(--bd);
-  padding:2px 6px;font-family:inherit;font-size:12px;color:var(--ink);outline:none;min-width:100px;}
-.cv-otros-desc::placeholder{color:var(--dim);}
+.guard{border:1px solid var(--bd);border-left:2px solid var(--red);background:var(--card);padding:11px 12px;margin:14px 0 0;display:none}
+.guard.show{display:block}
+.guard .gt{font-size:11px;font-weight:700;margin-bottom:6px}
+.guard a{display:block;font-size:11px;color:var(--red);padding:3px 0;text-decoration:none;cursor:pointer}
+.cta{margin-top:14px;width:100%;background:var(--ink);color:var(--bg);border:none;border-radius:0;
+  padding:14px;font-size:13px;font-weight:700;font-family:inherit;cursor:pointer;letter-spacing:.2px}
+.cta:active{opacity:.85}
+.fine{font-size:9.5px;color:var(--dim);text-align:center;margin-top:10px}
+.foot{margin-top:26px;padding-top:12px;border-top:1px solid var(--bd);display:flex;justify-content:space-between;font-size:9px;color:var(--dim)}
 
-/* PRODUCTS TABLE */
-.products-wrap{overflow-x:auto;}
-.products-table{width:100%;border-collapse:collapse;}
-.products-table th{font-size:8.5px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;
-  color:var(--dim);padding:9px 10px;border-bottom:1px solid var(--bd);text-align:left;white-space:nowrap;}
-.products-table td{padding:3px 3px;border-bottom:1px solid var(--bd);}
-.products-table tr:last-child td{border-bottom:none;}
-.products-table input{width:100%;background:var(--card);border:1px solid transparent;
-  border-radius:6px;padding:8px 9px;font-family:inherit;font-size:12.5px;
-  color:var(--ink);outline:none;transition:border-color .15s;font-weight:500;}
-.products-table input:focus{border-color:var(--bd2);}
-.products-table input::placeholder{color:var(--dim);}
-.row-num{display:inline-flex;align-items:center;justify-content:center;
-  width:19px;height:19px;background:var(--bd2);color:var(--dim);
-  border-radius:4px;font-size:9px;font-weight:700;}
+/* ── SEND SHEET ── */
+.sh{position:fixed;inset:0;z-index:100;background:rgba(28,26,22,.28);display:none;align-items:flex-end;justify-content:center}
+.sh.show{display:flex}
+.sh-in{width:100%;max-width:480px;background:var(--bg);border-top:1px solid var(--bd2);padding:16px 16px calc(20px + env(safe-area-inset-bottom))}
+.sh-t{font-size:14px;font-weight:700}
+.sh-s{font-size:11px;color:var(--sub);margin:3px 0 14px}
+.so{display:block;width:100%;text-align:left;background:var(--card);border:1px solid var(--bd);padding:12px 13px;
+  margin-bottom:6px;font-family:inherit;cursor:pointer;color:var(--ink)}
+.so b{display:block;font-size:12.5px}
+.so span{display:block;font-size:10.5px;color:var(--sub);margin-top:2px}
+.so:active{opacity:.85}
+.sh-x{width:100%;background:none;border:none;font-family:inherit;font-size:11px;color:var(--dim);padding:10px;cursor:pointer}
+.flash{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:var(--bg);
+  font-size:11px;padding:9px 14px;z-index:200;display:none}
+.flash.show{display:block}
 
-/* DIAG */
-.diag-section{margin-top:52px;border-top:1px solid var(--bd);}
-.diag-block{padding:30px 0;border-bottom:1px solid var(--bd);}
-.diag-block:last-of-type{border-bottom:none;}
-.diag-step{font-size:8.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;
-  color:var(--dim);display:flex;align-items:center;gap:8px;margin-bottom:11px;}
-.diag-step::after{content:"";width:18px;height:1px;background:var(--bd2);}
-.diag-q{font-size:clamp(15px,2.8vw,19px);font-weight:700;color:var(--ink);
-  line-height:1.25;letter-spacing:-.03em;margin-bottom:6px;}
-.diag-hint{font-size:11.5px;color:var(--sub);line-height:1.6;margin-bottom:16px;}
-.impact-scale{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;}
-.impact-opt{border:1px solid var(--bd);border-radius:7px;padding:11px 9px;
-  text-align:center;cursor:pointer;transition:border-color .15s;user-select:none;background:var(--card);}
-.impact-opt:hover{border-color:var(--sub);}
-.impact-opt.on{border-color:var(--sub);}
-.impact-opt.on.crit{border-color:var(--sub);}
-.impact-bar{width:100%;height:2px;border-radius:99px;background:var(--bd2);margin-bottom:8px;overflow:hidden;}
-.impact-bar-fill{height:100%;border-radius:99px;background:var(--bd2);transition:background .2s;}
-.impact-opt.on .impact-bar-fill{background:var(--sub);}
-.impact-opt.on.crit .impact-bar-fill{background:var(--sub);}
-.impact-lbl{font-size:10.5px;font-weight:600;color:var(--dim);line-height:1.3;display:block;}
-.impact-opt.on .impact-lbl{color:var(--ink);}
-.impact-opt.on.crit .impact-lbl{color:var(--ink);}
-.diag-textarea{width:100%;min-height:72px;background:var(--card);border:1px solid var(--bd);
-  border-radius:7px;padding:11px 13px;font-family:inherit;font-size:13px;color:var(--ink);
-  outline:none;resize:none;line-height:1.65;transition:border-color .15s;}
-.diag-textarea:focus{border-color:var(--sub);}
-.diag-textarea::placeholder{color:var(--dim);}
-.diag-meta-block{padding:30px 0;}
-.diag-meta-block .diag-step{color:var(--dim);}
-.diag-meta-block .diag-step::after{background:var(--bd2);}
-.diag-meta-block .diag-q{color:var(--ink);}
-.diag-meta-block .diag-textarea{border-color:var(--bd);}
-.diag-meta-block .diag-textarea:focus{border-color:var(--sub);}
+/* ── CONFIRM ── */
+#confirm{position:fixed;inset:0;z-index:300;background:var(--bg);display:none;align-items:center;justify-content:center;padding:32px 24px}
+#confirm.show{display:flex}
+.cf{max-width:340px;width:100%;display:flex;flex-direction:column;align-items:center;text-align:center}
+.cf h2{font-size:20px;font-weight:700;letter-spacing:-.4px;margin-top:16px;font-family:Cambria,Georgia,serif}
+.cf .biz{font-size:11px;color:var(--dim);margin-top:4px;text-transform:uppercase;letter-spacing:.5px;font-weight:700}
+.cf p{font-size:12.5px;color:var(--sub);line-height:1.55;margin-top:12px}
+.cf .blk{width:100%;text-align:left;margin-top:18px;padding-bottom:6px}
 
-/* ALL DONE */
-.all-done-banner{display:none;background:var(--card);border:1px solid var(--bd);
-  border-radius:8px;padding:13px 16px;align-items:center;justify-content:space-between;
-  gap:12px;margin-top:22px;}
-.all-done-banner.show{display:flex;}
-.all-done-banner p{font-size:12.5px;color:var(--ink);font-weight:700;}
-.send-btn{background:var(--ink);color:var(--bg);border:none;border-radius:7px;
-  padding:9px 16px;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;}
-.send-btn:active{opacity:.85;}
-
-/* PREMIUM */
-.premium{margin-top:52px;border-top:1px solid var(--bd);padding-top:44px;}
-.premium-score{display:flex;align-items:center;gap:18px;background:var(--card);
-  border:1px solid var(--bd);border-radius:8px;padding:18px;margin-bottom:22px;}
-.premium-score-n{font-weight:700;font-size:68px;letter-spacing:-.08em;line-height:.9;
-  color:var(--ink);flex:none;}
-.premium-score-title{font-size:12.5px;font-weight:700;color:var(--ink);margin-bottom:4px;}
-.premium-score-desc{font-size:11.5px;color:var(--sub);line-height:1.6;}
-.deliverables{display:flex;flex-direction:column;margin-bottom:26px;}
-.deliv{display:grid;grid-template-columns:2px 1fr;gap:0 16px;padding:14px 0;
-  border-bottom:1px solid var(--bd);align-items:start;}
-.deliv:first-child{border-top:1px solid var(--bd);}
-.deliv-accent{border-radius:99px;align-self:stretch;min-height:12px;}
-.da-green{background:var(--bd2);}
-.da-orange{background:var(--bd2);}
-.da-blue{background:var(--bd2);}
-.deliv-name{font-size:12.5px;font-weight:700;color:var(--ink);margin-bottom:3px;}
-.deliv-note{font-size:11px;color:var(--sub);line-height:1.55;}
-
-/* GUARD */
-.guard-banner{display:none;background:var(--red-bg);border:1px solid rgba(217,48,48,.2);
-  border-radius:7px;padding:13px 15px;margin-bottom:13px;}
-.guard-banner.show{display:block;}
-.guard-title{font-size:12px;font-weight:700;color:var(--red);margin-bottom:7px;}
-.guard-list{display:flex;flex-direction:column;gap:5px;}
-.guard-item{display:flex;align-items:center;gap:7px;font-size:11px;color:rgba(217,48,48,.8);font-weight:600;cursor:pointer;}
-.guard-item:hover{color:var(--red);}
-.guard-dot{width:4px;height:4px;border-radius:50%;background:var(--red);flex:none;}
-
-/* CTA */
-.cta-meta{display:flex;align-items:center;gap:9px;margin-bottom:11px;flex-wrap:wrap;}
-.cta-badge{background:var(--card);border:1px solid var(--bd);border-radius:99px;
-  padding:5px 11px;font-size:9px;font-weight:700;color:var(--dim);letter-spacing:.04em;text-transform:uppercase;}
-.cta-btn{width:100%;background:var(--ink);color:var(--bg);border:none;border-radius:8px;
-  padding:15px 22px;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;gap:9px;}
-.cta-btn:active{opacity:.88;}
-.cta-footer{font-size:10px;color:var(--dim);margin-top:13px;text-align:center;line-height:1.7;}
-
-/* SEND PANEL */
-.send-panel{display:none;position:fixed;inset:0;z-index:9000;background:rgba(9,8,7,.75);
-  backdrop-filter:blur(6px);align-items:flex-end;justify-content:center;padding:0 16px 24px;}
-.send-panel.show{display:flex;}
-.send-panel-inner{background:var(--card);border-radius:12px;border:1px solid var(--bd2);
-  max-width:460px;width:100%;overflow:hidden;}
-.send-panel-head{padding:17px 19px 13px;border-bottom:1px solid var(--bd);}
-.send-panel-head h3{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:3px;}
-.send-panel-head p{font-size:11px;color:var(--sub);line-height:1.5;}
-.send-panel-body{padding:13px 15px;}
-.send-option{border:1px solid var(--bd);border-radius:8px;padding:12px 13px;margin-bottom:7px;
-  cursor:pointer;transition:border-color .12s;display:flex;align-items:center;gap:11px;
-  text-align:left;width:100%;background:var(--bg);font-family:inherit;}
-.send-option:hover{border-color:var(--sub);}
-.send-option:last-child{margin-bottom:0;}
-.send-opt-icon{width:32px;height:32px;border-radius:7px;display:flex;align-items:center;justify-content:center;flex:none;}
-.soi-email{background:var(--bd2);}
-.soi-copy{background:var(--bd2);}
-.send-opt-title{font-size:12.5px;font-weight:700;color:var(--ink);margin-bottom:2px;}
-.send-opt-sub{font-size:10.5px;color:var(--sub);}
-.send-panel-close{width:100%;padding:11px;border:none;background:transparent;
-  font-family:inherit;font-size:11.5px;color:var(--dim);cursor:pointer;
-  border-top:1px solid var(--bd);transition:color .12s;}
-.send-panel-close:hover{color:var(--sub);}
-
-/* COPY FLASH */
-.copy-flash{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);
-  background:var(--ink);color:var(--bg);padding:10px 19px;border-radius:7px;
-  font-size:12.5px;font-weight:700;opacity:0;pointer-events:none;z-index:9999;
-  transition:opacity .3s ease;white-space:nowrap;}
-.copy-flash.show{opacity:1;}
-
-/* CONFIRM */
-#confirm-screen{display:none;position:fixed;inset:0;background:var(--bg);z-index:9999;
-  align-items:center;justify-content:center;padding:24px;}
-.confirm-inner{max-width:360px;width:100%;text-align:center;}
-.confirm-icon{font-size:36px;margin-bottom:20px;display:block;}
-.confirm-inner h2{font-size:24px;font-weight:700;color:var(--ink);margin-bottom:6px;letter-spacing:-.04em;}
-.confirm-negocio{font-size:13px;font-weight:700;color:var(--sub);margin-bottom:11px;}
-.confirm-desc{font-size:12px;color:var(--sub);line-height:1.7;margin-bottom:24px;}
-.confirm-list{background:var(--card);border:1px solid var(--bd);border-radius:8px;padding:16px;text-align:left;}
-.confirm-list-title{font-size:8.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--dim);margin-bottom:11px;}
-.confirm-item{display:flex;align-items:center;gap:9px;font-size:12px;color:var(--sub);font-weight:500;margin-bottom:8px;}
-.confirm-item:last-child{margin-bottom:0;}
-.confirm-check{width:16px;height:16px;background:var(--sub);border-radius:4px;
-  display:flex;align-items:center;justify-content:center;flex:none;}
-.confirm-check-mark{width:7px;height:4px;border-left:1.5px solid var(--bg);border-bottom:1.5px solid var(--bg);transform:rotate(-45deg) translateY(-1px);}
-.confirm-check.orange-bg{background:var(--sub);}
-
-/* FOOTER */
-.foot{margin-top:22px;padding-top:13px;border-top:1px solid var(--bd);
-  display:flex;justify-content:space-between;align-items:center;}
-.foot-l,.foot-r{font-size:9px;color:var(--dim);}
-
-@media(max-width:540px){
-  .portada-meta{grid-template-columns:1fr 1fr;}
-  .pm:nth-child(2){border-left:1px solid var(--bd);}
-  .pm:nth-child(3){border-top:1px solid var(--bd);border-left:none;}
-  .pm:nth-child(4){border-top:1px solid var(--bd);border-left:1px solid var(--bd);}
-  .field-row,.field-row-3{grid-template-columns:1fr;}
-  .impact-scale{grid-template-columns:1fr 1fr;}
-  .all-done-banner{flex-direction:column;align-items:flex-start;}
-  .premium-score{flex-direction:column;align-items:flex-start;}
-  .send-panel{padding:0;}
-  .send-panel-inner{border-radius:12px 12px 0 0;}
+@media(min-width:640px){
+  .page{padding-top:24px}
+  .page>.hdr,.page>.body{border-left:1px solid var(--bd);border-right:1px solid var(--bd)}
+  .prog{border-left:1px solid var(--bd);border-right:1px solid var(--bd)}
 }
-@media(prefers-reduced-motion:reduce){*{transition:none !important;animation:none !important}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
-<div class="page">
+<div class="page" id="page">
 
 <div class="hdr">
-  <div class="brand">Acly</div>
+  <div class="hdr-l">
+    <div class="mono">A</div>
+    <div class="brand">Acly<small>Barbershop intake</small></div>
+  </div>
+  <div class="hdr-r">Confidential</div>
 </div>
 
-<div class="portada">
-  <h1>Tell us about your barbershop.</h1>
-  <p class="portada-sub">It will last 5 minutes. The more accurate your numbers are, the more accurate the analysis will be.</p>
-</div>
-
-<div class="prog-wrap">
-  <div class="prog-track">
-    <div class="prog-step" id="pbar-1"></div>
-    <div class="prog-step" id="pbar-2"></div>
-    <div class="prog-step" id="pbar-3"></div>
-    <div class="prog-step" id="pbar-4"></div>
-    <div class="prog-step" id="pbar-5"></div>
-    <div class="prog-step" id="pbar-6"></div>
-  </div>
-  <div style="display:flex;align-items:center;justify-content:space-between;margin-top:5px;">
-    <div class="prog-labels" style="flex:1;">
-      <div class="prog-lbl" id="plbl-1">Barbershop</div>
-      <div class="prog-lbl" id="plbl-2">Sales</div>
-      <div class="prog-lbl" id="plbl-3">Team</div>
-      <div class="prog-lbl" id="plbl-4">Expenses</div>
-      <div class="prog-lbl" id="plbl-5">Goals</div>
-      <div class="prog-lbl" id="plbl-6">Diagnostic</div>
-    </div>
-    <div class="prog-counter" id="prog-counter" style="flex:none;margin-left:10px;">0/6</div>
+<div class="body">
+<div class="cover">
+  <div class="ey">Intake · Barbershop</div>
+  <h1>Tell us how last month went.</h1>
+  <p>Use your register, booking app or bank statement if you have it. Where you don't, a careful estimate is fine — we'll flag anything that doesn't add up before we analyze it.</p>
+  <div class="krow">
+    <div class="kc"><div class="kk">Sections</div><div class="kv">7</div></div>
+    <div class="kc"><div class="kk">Time</div><div class="kv">~8 min</div></div>
+    <div class="kc"><div class="kk">Diagnostic</div><div class="kv">Within a week</div></div>
   </div>
 </div>
-
-<div class="section" id="s-1">
-  <div class="section-num">01 &mdash; Your Barbershop</div>
-  <div class="section-title">Tell us about the operation.</div>
-  <div class="section-sub">Your installed capacity defines your revenue ceiling &mdash; chairs, barbers and hours are your real asset.</div>
-  <div class="field-row">
-    <div class="field">
-      <label class="field-label">Barbershop name</label>
-      <input id="s1-name" class="input" type="text" placeholder="Business name">
-    </div>
-    <div class="field">
-      <label class="field-label">Establishment type</label>
-      <select id="s1-giro" class="input">
-        <option value="">Select type&hellip;</option>
-        <option>Barbershop</option>
-        <option>Men&#39;s Hair Salon</option>
-        <option>Barbershop + Grooming</option>
-        <option>Mobile Barber</option>
-        <option>Other</option>
-      </select>
-    </div>
-  </div>
-  <div class="field-row-3">
-    <div class="field">
-      <label class="field-label">Active chairs</label>
-      <input id="s1-sillas" class="input" type="number" placeholder="Ex: 3">
-    </div>
-    <div class="field">
-      <label class="field-label">Operating days / week</label>
-      <select id="s1-dias" class="input">
-        <option value="">Select&hellip;</option>
-        <option>5 days</option>
-        <option>6 days</option>
-        <option>7 days</option>
-      </select>
-    </div>
-    <div class="field">
-      <label class="field-label">Operating hours / day</label>
-      <input id="s1-horas" class="input" type="number" placeholder="Ex: 10">
-    </div>
-  </div>
-  <div class="field-row">
-    <div class="field">
-      <label class="field-label">Time in operation</label>
-      <select id="s1-tiempo" class="input">
-        <option value="">Select&hellip;</option>
-        <option>Less than 6 months</option>
-        <option>6 to 12 months</option>
-        <option>1 to 3 years</option>
-        <option>More than 3 years</option>
-      </select>
-    </div>
-    <div class="field">
-      <label class="field-label">Barber payment structure</label>
-      <div class="chip-grid" id="s1-esquema-chips">
-        <span class="chip" onclick="toggleChipSingle(this,'s1-esquema-chips')">Fixed salary</span>
-        <span class="chip" onclick="toggleChipSingle(this,'s1-esquema-chips')">Commission</span>
-        <span class="chip" onclick="toggleChipSingle(this,'s1-esquema-chips')">Mixed</span>
-        <span class="chip" onclick="toggleChipSingle(this,'s1-esquema-chips')">Chair rental</span>
-      </div>
-    </div>
-  </div>
 </div>
 
-<div class="section" id="s-2">
-  <div class="section-num">02 &mdash; Last Month&#39;s Revenue</div>
-  <div class="section-title">Volume and ticket.</div>
-  <div class="section-sub">The two levers of your total revenue &mdash; how many services and how much each one pays.</div>
-  <div class="insight">
-    <div class="insight-dot"></div>
-    <p>If you don&#39;t track exactly, estimate your typical week and multiply by 4. Every service counts &mdash; cuts, beards, treatments.</p>
-  </div>
-  <div class="field-row" style="margin-bottom:11px;">
-    <div class="box">
-      <label class="field-label">Total revenue this month</label>
-      <input id="s2-ventas" class="input-big" type="text" placeholder="$ 0">
-      <div class="input-hint">All money that came into the business</div>
-    </div>
-    <div class="box">
-      <label class="field-label">Total services performed</label>
-      <input id="s2-servicios" class="input-big" type="number" placeholder="0">
-      <div class="input-hint">Cuts + beards + other services</div>
-    </div>
-  </div>
-  <div class="field-row" style="margin-bottom:11px;">
-    <div class="box">
-      <label class="field-label">Unique customers this month</label>
-      <input id="s2-clientes" class="input-big" type="number" placeholder="0">
-      <div class="input-hint">Different people who came this month</div>
-    </div>
-    <div class="box">
-      <label class="field-label">New clients this month</label>
-      <input id="s2-nuevos" class="input-big" type="number" placeholder="0">
-      <div class="input-hint">Who came for the first time</div>
-    </div>
-  </div>
-  <div class="field-row">
-    <div class="field">
-      <label class="field-label">Average price per service ($)</label>
-      <input id="s2-ticket" class="input" type="text" placeholder="$ 0.00">
-    </div>
-    <div class="field">
-      <label class="field-label">Main service mix</label>
-      <div class="chip-grid" id="s2-servicios-chips">
-        <span class="chip" onclick="toggleChipSingle(this,'s2-servicios-chips')">Haircut / beard only</span>
-        <span class="chip" onclick="toggleChipSingle(this,'s2-servicios-chips')">Cut + products</span>
-        <span class="chip" onclick="toggleChipSingle(this,'s2-servicios-chips')">Cut + treatments</span>
-        <span class="chip" onclick="toggleChipSingle(this,'s2-servicios-chips')">Full grooming</span>
-      </div>
-    </div>
-  </div>
+<div class="prog">
+  <div class="prog-track" id="ptrack"></div>
+  <div class="prog-meta"><span id="plabel">Barbershop</span><span><b id="pcount">0</b> / 7 complete</span></div>
 </div>
 
-<div class="section" id="s-3">
-  <div class="section-num">03 &mdash; Your Barber Team</div>
-  <div class="section-title">Productivity per chair.</div>
-  <div class="section-sub">Your biggest cost and your biggest opportunity &mdash; knowing what each barber generates vs costs is the most important number in your barbershop.</div>
-  <div class="insight">
-    <div class="insight-dot"></div>
-    <p>Knowing how much each chair generates vs costs reveals if each barber is profitable. A chair that costs more than it generates is your most urgent problem.</p>
+<div class="body">
+
+<!-- 01 BARBERSHOP -->
+<section class="sec" id="s-1" data-name="Barbershop">
+  <div class="sec-n">01 · Your barbershop</div>
+  <h2>The basics.</h2>
+  <div class="sec-sub">Chairs, days and hours set the ceiling on what the shop can earn.</div>
+  <div class="blk">
+    <div class="f"><label class="lbl" for="name">Barbershop name</label><input class="in" id="name" type="text" autocomplete="organization" placeholder="Business name"></div>
+    <div class="g2">
+      <div class="f"><label class="lbl" for="period">Month you're reporting</label><select class="in" id="period"></select></div>
+      <div class="f"><label class="lbl" for="type">Type</label>
+        <select class="in" id="type"><option value="">Select…</option><option>Barbershop</option><option>Men's hair salon</option><option>Barbershop + grooming</option><option>Mobile barber</option><option>Other</option></select></div>
+    </div>
+    <div class="g3">
+      <div class="f"><label class="lbl" for="chairs">Active chairs</label><input class="in tn" id="chairs" type="text" inputmode="numeric" placeholder="3"></div>
+      <div class="f"><label class="lbl" for="days">Days / week</label>
+        <select class="in" id="days"><option value="">—</option><option>5</option><option>6</option><option>7</option></select></div>
+      <div class="f"><label class="lbl" for="hours">Hours / day</label><input class="in tn" id="hours" type="text" inputmode="decimal" placeholder="10"></div>
+    </div>
+    <div class="f"><label class="lbl" for="age">Time in operation</label>
+      <select class="in" id="age"><option value="">Select…</option><option>Less than 6 months</option><option>6 to 12 months</option><option>1 to 3 years</option><option>More than 3 years</option></select></div>
   </div>
-  <div class="products-wrap">
-    <table class="products-table">
-      <thead><tr>
-        <th style="width:34px;padding-left:9px;">#</th>
-        <th>Barber name</th><th>Cuts / month</th><th>Revenue generated ($)</th><th>Monthly cost ($)</th>
-      </tr></thead>
-      <tbody>
-        <tr><td style="padding-left:7px;padding-right:3px;"><span class="row-num">1</span></td><td><input class="prod-name" type="text" placeholder="Ex: Carlos"></td><td><input class="prod-qty" type="number" placeholder="0"></td><td><input class="prod-price" type="text" placeholder="$ 0"></td><td><input class="prod-cost" type="text" placeholder="$ 0"></td></tr>
-        <tr><td style="padding-left:7px;padding-right:3px;"><span class="row-num">2</span></td><td><input class="prod-name" type="text" placeholder="Ex: Miguel"></td><td><input class="prod-qty" type="number" placeholder="0"></td><td><input class="prod-price" type="text" placeholder="$ 0"></td><td><input class="prod-cost" type="text" placeholder="$ 0"></td></tr>
-        <tr><td style="padding-left:7px;padding-right:3px;"><span class="row-num">3</span></td><td><input class="prod-name" type="text" placeholder=""></td><td><input class="prod-qty" type="number" placeholder="0"></td><td><input class="prod-price" type="text" placeholder="$ 0"></td><td><input class="prod-cost" type="text" placeholder="$ 0"></td></tr>
-        <tr><td style="padding-left:7px;padding-right:3px;"><span class="row-num">4</span></td><td><input class="prod-name" type="text" placeholder=""></td><td><input class="prod-qty" type="number" placeholder="0"></td><td><input class="prod-price" type="text" placeholder="$ 0"></td><td><input class="prod-cost" type="text" placeholder="$ 0"></td></tr>
-        <tr><td style="padding-left:7px;padding-right:3px;"><span class="row-num">5</span></td><td><input class="prod-name" type="text" placeholder=""></td><td><input class="prod-qty" type="number" placeholder="0"></td><td><input class="prod-price" type="text" placeholder="$ 0"></td><td><input class="prod-cost" type="text" placeholder="$ 0"></td></tr>
-      </tbody>
-    </table>
+  <div class="blk">
+    <div class="bh">Where we send your diagnostic</div>
+    <div class="f"><label class="lbl" for="owner">Your name</label><input class="in" id="owner" type="text" autocomplete="name" placeholder="First name is fine"></div>
+    <div class="g2">
+      <div class="f"><label class="lbl" for="phone">Mobile <span>(text)</span></label><input class="in tn" id="phone" type="tel" autocomplete="tel" placeholder="(555) 123-4567"></div>
+      <div class="f"><label class="lbl" for="email">Email</label><input class="in" id="email" type="email" autocomplete="email" placeholder="you@shop.com"></div>
+    </div>
+    <div class="hint" style="margin:-4px 0 11px">One of the two is enough. The access code goes separately from the link.</div>
   </div>
-  <div class="field" style="margin-top:16px;">
-    <label class="field-label">Monthly cost of supplies &amp; products <span>(blades, dyes, gels, etc.)</span></label>
-    <input id="s3-insumos" class="input" type="text" placeholder="$ 0" style="max-width:220px;">
+</section>
+
+<!-- 02 REVENUE -->
+<section class="sec" id="s-2" data-name="Revenue">
+  <div class="sec-n">02 · Revenue</div>
+  <h2>What came in.</h2>
+  <div class="sec-sub">Everything for the month you picked above — services and products, before paying anyone.</div>
+  <div class="note">No exact count? Take a typical week and multiply by <b>4.3</b>.</div>
+  <div class="blk">
+    <div class="f"><label class="lbl" for="rev">Total revenue for the month</label><div class="money big"><input class="in big tn" id="rev" type="text" inputmode="decimal" placeholder="0"></div>
+      <div class="hint">Cash, card and app. <b style="color:var(--ink)">Leave out tips</b> — they belong to the barbers, not the shop.</div></div>
+    <div class="g2">
+      <div class="f"><label class="lbl" for="retail">Product sales</label><div class="money"><input class="in tn" id="retail" type="text" inputmode="decimal" placeholder="0"></div>
+        <div class="hint">Optional. Part of the total above.</div></div>
+      <div class="f"><label class="lbl" for="cardfees">Card & app fees</label><div class="money"><input class="in tn" id="cardfees" type="text" inputmode="decimal" placeholder="0"></div>
+        <div class="hint">Optional. On your Square or Booksy statement.</div></div>
+    </div>
+    <div class="f"><label class="lbl" for="svc">Total services performed</label><input class="in tn" id="svc" type="text" inputmode="numeric" placeholder="0">
+      <div class="hint">Every cut, beard, shave or treatment counts as one.</div></div>
+    <div class="g2">
+      <div class="f"><label class="lbl" for="uniq">Different clients</label><input class="in tn" id="uniq" type="text" inputmode="numeric" placeholder="0"></div>
+      <div class="f"><label class="lbl" for="newc">First-time clients</label><input class="in tn" id="newc" type="text" inputmode="numeric" placeholder="0"></div>
+    </div>
+    <div class="hint" style="margin:-6px 0 11px">Only if your booking app shows them — otherwise leave blank.</div>
+    <div class="err" id="err-newc">First-time clients can't be more than different clients.</div>
   </div>
+</section>
+
+<!-- 03 SERVICES -->
+<section class="sec" id="s-3" data-name="Services">
+  <div class="sec-n">03 · Services</div>
+  <h2>What you sell, and for how much.</h2>
+  <div class="sec-sub">This is how we find which services pay for the chair and which don't. List your main ones — up to six.</div>
+  <div class="blk">
+    <div class="bh">Your services</div>
+    <div id="svc-rows"></div>
+    <button class="add" type="button" id="svc-add">+ Add a service</button>
+    <div class="chk" id="chk-svc"></div>
+  </div>
+  <div class="blk">
+    <div class="f"><label class="lbl">When did you last raise prices?</label>
+      <div class="opts" data-group="lastraise" data-single>
+        <button type="button" class="opt">Less than 6 months ago</button><button type="button" class="opt">6–12 months ago</button>
+        <button type="button" class="opt">More than a year ago</button><button type="button" class="opt">Never since opening</button></div></div>
+    <div class="f"><label class="lbl">Where do clients see your prices? <span>(all that apply)</span></label>
+      <div class="opts" data-group="priceshown">
+        <button type="button" class="opt">Board in the shop</button><button type="button" class="opt">Booking app</button>
+        <button type="button" class="opt">Instagram / website</button><button type="button" class="opt">They ask the barber</button></div></div>
+    <div class="f"><label class="lbl" for="comp">Price of a regular cut at the closest competitor <span>(optional)</span></label>
+      <div class="money" style="max-width:150px"><input class="in tn" id="comp" type="text" inputmode="decimal" placeholder="0"></div></div>
+  </div>
+</section>
+
+<!-- 04 TEAM -->
+<section class="sec" id="s-4" data-name="Team">
+  <div class="sec-n">04 · Team</div>
+  <h2>How your barbers are paid.</h2>
+  <div class="sec-sub">Usually the largest cost in the shop — and the one that decides how much of a price change you actually keep.</div>
+  <div class="blk">
+    <div class="f"><label class="lbl">Pay structure</label>
+      <div class="opts" data-group="paystruct" data-single>
+        <button type="button" class="opt">Commission</button><button type="button" class="opt">Fixed salary</button>
+        <button type="button" class="opt">Mixed</button><button type="button" class="opt">Chair rental</button></div></div>
+    <div class="f" id="f-rate" hidden><label class="lbl" for="rate">Commission rate barbers keep</label>
+      <div style="display:flex;align-items:center;gap:6px;max-width:130px"><input class="in tn" id="rate" type="text" inputmode="decimal" placeholder="50"><span style="font-size:13px;color:var(--dim)">%</span></div>
+      <div class="hint">Of each service price. If it varies, use the most common rate.</div></div>
+    <div class="f" id="f-rent" hidden><label class="lbl" for="chairrent">Chair rent you collect per month <span>(all barbers)</span></label>
+      <div class="money" style="max-width:170px"><input class="in tn" id="chairrent" type="text" inputmode="decimal" placeholder="0"></div>
+      <div class="hint">With chair rental, report as revenue only what comes to you: this rent plus your own chair.</div></div>
+  </div>
+  <div class="blk">
+    <div class="bh">Your barbers <span style="text-transform:none;letter-spacing:0;font-weight:500">· include yourself if you cut</span></div>
+    <div class="hint" style="margin:-6px 0 12px">For yourself, leave pay at $0 — what you take home goes in section 06. For salaried barbers, include payroll taxes.</div>
+    <div id="bar-rows"></div>
+    <button class="add" type="button" id="bar-add">+ Add a barber</button>
+    <div class="chk" id="chk-bar"></div>
+  </div>
+  <div class="blk">
+    <div class="f"><label class="lbl" for="supplies">Supplies & retail products bought this month</label>
+      <div class="money" style="max-width:170px"><input class="in tn" id="supplies" type="text" inputmode="decimal" placeholder="0"></div>
+      <div class="hint">Blades, product, towels, capes, laundry — and retail stock you resell.</div></div>
+  </div>
+</section>
+
+<!-- 05 FIXED -->
+<section class="sec" id="s-5" data-name="Fixed costs">
+  <div class="sec-n">05 · Fixed costs</div>
+  <h2>What you pay no matter how busy you are.</h2>
+  <div class="sec-sub">Monthly amounts. Leave blank anything that doesn't apply.</div>
+  <div class="blk">
+    <div class="g2">
+      <div class="f"><label class="lbl" for="cf-rent">Rent</label><div class="money"><input class="in tn" id="cf-rent" type="text" inputmode="decimal" placeholder="0"></div></div>
+      <div class="f"><label class="lbl" for="cf-util">Utilities</label><div class="money"><input class="in tn" id="cf-util" type="text" inputmode="decimal" placeholder="0"></div></div>
+      <div class="f"><label class="lbl" for="cf-soft">Apps & software</label><div class="money"><input class="in tn" id="cf-soft" type="text" inputmode="decimal" placeholder="0"></div></div>
+      <div class="f"><label class="lbl" for="cf-mkt">Marketing</label><div class="money"><input class="in tn" id="cf-mkt" type="text" inputmode="decimal" placeholder="0"></div></div>
+      <div class="f"><label class="lbl" for="cf-acct">Accounting / legal</label><div class="money"><input class="in tn" id="cf-acct" type="text" inputmode="decimal" placeholder="0"></div></div>
+      <div class="f"><label class="lbl" for="cf-mant">Maintenance / equipment</label><div class="money"><input class="in tn" id="cf-mant" type="text" inputmode="decimal" placeholder="0"></div></div>
+      <div class="f"><label class="lbl" for="cf-ins">Insurance</label><div class="money"><input class="in tn" id="cf-ins" type="text" inputmode="decimal" placeholder="0"></div></div>
+      <div class="f"><label class="lbl" for="cf-fin">Loan payments</label><div class="money"><input class="in tn" id="cf-fin" type="text" inputmode="decimal" placeholder="0"></div></div>
+    </div>
+    <div class="f"><label class="lbl" for="cf-oth">Anything else every month</label><div class="money" style="max-width:170px"><input class="in tn" id="cf-oth" type="text" inputmode="decimal" placeholder="0"></div></div>
+    <div class="f" id="f-othdesc" hidden><label class="lbl" for="cf-othdesc">What is it?</label><input class="in" id="cf-othdesc" type="text" placeholder="Parking, licenses, cleaning…"></div>
+    <div class="hint" style="margin:-4px 0 11px">Apps & software: booking, POS, music. If it's yearly (like insurance), divide by 12. Don't include barber pay or your own pay here.</div>
+  </div>
+</section>
+
+<!-- 06 OWNER -->
+<section class="sec" id="s-6" data-name="You">
+  <div class="sec-n">06 · You</div>
+  <h2>Is the shop paying you?</h2>
+  <div class="sec-sub">The gap between these two numbers is part of the diagnostic.</div>
+  <div class="blk">
+    <div class="f"><label class="lbl" for="draw">What you actually took home last month</label><div class="money big"><input class="in big tn" id="draw" type="text" inputmode="decimal" placeholder="0"></div>
+      <div class="hint">Not what you'd like — what you took, including anything you paid yourself as salary.</div></div>
+    <div class="f"><label class="lbl" for="need">What you need per month to feel stable</label><div class="money big"><input class="in big tn" id="need" type="text" inputmode="decimal" placeholder="0"></div></div>
+    <div class="f"><label class="lbl">Where did today's numbers come from?</label>
+      <div class="opts" data-group="tracks" data-single>
+        <button type="button" class="opt">Register / booking app</button><button type="button" class="opt">Partly records, partly estimate</button><button type="button" class="opt">Mostly from memory</button></div></div>
+  </div>
+</section>
+
+<!-- 07 YOUR READ -->
+<section class="sec" id="s-7" data-name="Your read">
+  <div class="sec-n">07 · Your read</div>
+  <h2>What the numbers can't tell us.</h2>
+  <div class="sec-sub">No right answers. We compare what you feel with what the numbers say.</div>
+
+  <div class="blk">
+    <div class="f"><label class="lbl">How did last month feel?</label>
+      <div class="opts" data-group="feel" data-single>
+        <button type="button" class="opt">Better than usual</button><button type="button" class="opt">About normal</button>
+        <button type="button" class="opt">Worse than usual</button><button type="button" class="opt">Hard to say</button></div></div>
+    <div class="f"><label class="lbl" for="words">In one sentence, how is the business doing?</label>
+      <textarea class="in" id="words" rows="2" placeholder="“We're busy every Saturday but it doesn't show at the end of the month.”"></textarea></div>
+  </div>
+
+  <div class="blk">
+    <div class="f"><label class="lbl">What's holding the shop back most?</label>
+      <div class="opts col" data-group="obstacle" data-single>
+        <button type="button" class="opt">Not enough clients</button><button type="button" class="opt">Clients don't come back</button>
+        <button type="button" class="opt">Chairs sit empty part of the day</button><button type="button" class="opt">The team costs more than it brings in</button>
+        <button type="button" class="opt">Busy, but little is left at the end</button><button type="button" class="opt">I don't have clarity on my numbers</button></div>
+      <input class="in" id="obstacle-other" type="text" placeholder="Something else? Write it here" style="margin-top:6px;font-size:13px"></div>
+    <div class="f"><label class="lbl">What have you already tried? <span>(all that apply)</span></label>
+      <div class="opts" data-group="tried">
+        <button type="button" class="opt">Raised prices</button><button type="button" class="opt">Ads or social media</button>
+        <button type="button" class="opt">Hired another barber</button><button type="button" class="opt">Added services</button>
+        <button type="button" class="opt">Cut costs</button><button type="button" class="opt">Outside advice</button><button type="button" class="opt" data-none>Nothing yet</button></div></div>
+    <div class="f" id="f-result"><label class="lbl">How did it go?</label>
+      <div class="opts" data-group="result" data-single>
+        <button type="button" class="opt">Worked, but didn't last</button><button type="button" class="opt">Helped a little</button>
+        <button type="button" class="opt">Didn't work</button></div></div>
+  </div>
+
+  <div class="blk">
+    <div class="f"><label class="lbl">How often does a regular client come back?</label>
+      <div class="opts" data-group="retention" data-single>
+        <button type="button" class="opt">Under 3 weeks</button><button type="button" class="opt">3–5 weeks</button>
+        <button type="button" class="opt">Over 5 weeks</button><button type="button" class="opt">I don't track it</button></div></div>
+    <div class="f"><label class="lbl">How full are the chairs during open hours?</label>
+      <div class="opts" data-group="occupancy" data-single>
+        <button type="button" class="opt">Full — no gaps</button><button type="button" class="opt">Some idle hours</button>
+        <button type="button" class="opt">Busy only certain days</button><button type="button" class="opt">Often empty</button></div></div>
+  </div>
+
+  <div class="blk">
+    <div class="f"><label class="lbl" for="why">Why isn't the shop where you want it to be?</label>
+      <textarea class="in" id="why" rows="3" placeholder="The first thing that comes to mind."></textarea></div>
+    <div class="f"><label class="lbl">How much is this affecting you?</label>
+      <div class="opts col" data-group="impact" data-single>
+        <button type="button" class="opt lvl"><span class="bars"><i class="f"></i><i></i><i></i><i></i></span>Annoying, but manageable</button>
+        <button type="button" class="opt lvl"><span class="bars"><i class="f"></i><i class="f"></i><i></i><i></i></span>It's limiting growth</button>
+        <button type="button" class="opt lvl"><span class="bars"><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>It's costing me money every month</button>
+        <button type="button" class="opt lvl"><span class="bars"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>I feel stuck</button></div></div>
+    <div class="f"><label class="lbl" for="ifsolved">If that problem were solved, what would change for you?</label>
+      <textarea class="in" id="ifsolved" rows="2" placeholder="One line is enough."></textarea></div>
+  </div>
+</section>
+
+<!-- WHAT YOU RECEIVE -->
+<section class="recv">
+  <div class="sec-n">What you receive</div>
+  <h2 style="font-size:18px;font-weight:700;letter-spacing:-.4px">One diagnostic. One move.</h2>
+  <div class="sec-sub">A private page, built from your numbers, readable in five minutes.</div>
+  <div class="blk" style="padding-bottom:4px">
+    <div class="li"><span class="no">1</span><span class="tx"><b>What came in and what you kept</b> — and how many cents of every dollar are yours.</span></div>
+    <div class="li"><span class="no">2</span><span class="tx"><b>The one move for this week</b> — the change with the highest dollar impact and the lowest risk, with steps.</span></div>
+    <div class="li"><span class="no">3</span><span class="tx"><b>Where the money goes</b> — barbers, rent, supplies, apps — and what went up.</span></div>
+    <div class="li"><span class="no">4</span><span class="tx"><b>Your services ranked</b> by what they leave per hour of chair time.</span></div>
+    <div class="li"><span class="no">5</span><span class="tx"><b>Break-even</b> — the monthly minimum, per day and in clients.</span></div>
+  </div>
+
+  <div class="guard" id="guard"><div class="gt">Still missing before you submit:</div><div id="guard-list"></div></div>
+  <button class="cta" type="button" id="cta">Submit my numbers</button>
+  <p class="fine">Confidential. Used only to prepare your diagnostic.</p>
+  <div class="foot"><span>Prepared by Acly · acly.co</span><span>Barbershop intake</span></div>
+</section>
+
+</div>
 </div>
 
-<div class="section" id="s-4">
-  <div class="section-num">04 &mdash; Fixed Expenses</div>
-  <div class="section-title">What you pay regardless of how many cuts you do.</div>
-  <div class="section-sub">These are the costs that stay the same whether you do 10 cuts or 300.</div>
-  <div class="cv-grid">
-    <div class="cv-item"><span class="cv-dot"></span><span class="cv-label">Rent</span><input class="cv-input" id="cf-renta" type="text" placeholder="$ 0"></div>
-    <div class="cv-item"><span class="cv-dot"></span><span class="cv-label">Utilities (electricity, water, internet)</span><input class="cv-input" id="cf-servicios" type="text" placeholder="$ 0"></div>
-    <div class="cv-item"><span class="cv-dot"></span><span class="cv-label">Subscriptions / software <small>(booking, music, POS)</small></span><input class="cv-input" id="cf-suscripciones" type="text" placeholder="$ 0"></div>
-    <div class="cv-item"><span class="cv-dot"></span><span class="cv-label">Marketing / advertising</span><input class="cv-input" id="cf-marketing" type="text" placeholder="$ 0"></div>
-    <div class="cv-item"><span class="cv-dot"></span><span class="cv-label">Accounting / legal</span><input class="cv-input" id="cf-contabilidad" type="text" placeholder="$ 0"></div>
-    <div class="cv-item"><span class="cv-dot"></span><span class="cv-label">Maintenance / equipment</span><input class="cv-input" id="cf-mantenimiento" type="text" placeholder="$ 0"></div>
-    <div class="cv-item"><span class="cv-dot"></span><span class="cv-label">Financing / interest</span><input class="cv-input" id="cf-financiamiento" type="text" placeholder="$ 0"></div>
-    <div class="cv-item cv-otros"><span class="cv-dot"></span><span class="cv-label">Other fixed expenses</span><input class="cv-otros-desc" id="cf-otros-desc" type="text" placeholder="Which ones?"><input class="cv-input" id="cf-otros-val" type="text" placeholder="$ 0"></div>
+<!-- SEND SHEET -->
+<div class="sh" id="send">
+  <div class="sh-in">
+    <div class="sh-t">Submit your numbers</div>
+    <div class="sh-s">Both options deliver the same information to Acly.</div>
+    <button class="so" type="button" id="send-direct"><b>Send directly</b><span>Goes straight to our team. Nothing else to do.</span></button>
+    <button class="so" type="button" id="send-copy"><b>Send and copy a summary</b><span>Also copies everything to your clipboard, to keep or send by WhatsApp.</span></button>
+    <button class="sh-x" type="button" id="send-x">Cancel — keep editing</button>
   </div>
 </div>
+<div class="flash" id="flash">Summary copied to clipboard</div>
 
-<div class="section" id="s-5">
-  <div class="section-num">05 &mdash; Goals &amp; Financial Context</div>
-  <div class="section-title">Is the barbershop working for you?</div>
-  <div class="section-sub">These three numbers define whether your barbershop serves its owner &mdash; or the other way around.</div>
-  <div class="insight">
-    <div class="insight-dot"></div>
-    <p>The gap between what the barbershop generates and what you need is the most honest metric of the diagnostic.</p>
-  </div>
-  <div class="field-row" style="margin-bottom:11px;">
-    <div class="box orange">
-      <label class="field-label">How much do you take home per month right now?</label>
-      <input id="s6-retiro" class="input-big orange" type="text" placeholder="$ 0">
-      <div class="input-hint orange">What you actually take home &mdash; not what you wish</div>
-    </div>
-    <div class="box green">
-      <label class="field-label">How much do you need to feel financially stable?</label>
-      <input id="s6-meta-personal" class="input-big green" type="text" placeholder="$ 0">
-      <div class="input-hint green">Your barbershop exists to serve you</div>
-    </div>
-  </div>
-  <div class="field-row">
-    <div class="box">
-      <label class="field-label">Monthly profit you want to generate</label>
-      <input id="s6-meta-negocio" class="input-big" type="text" placeholder="$ 0">
-      <div class="input-hint">The analysis will calculate how far or close you are</div>
-    </div>
-    <div class="field" style="align-self:end;">
-      <div class="field" style="margin-bottom:11px;">
-        <label class="field-label">Do you track your real numbers?</label>
-        <select id="s6-registro" class="input">
-          <option value="">Select&hellip;</option>
-          <option>Yes, I track it monthly</option>
-          <option>Partially &mdash; I have some data</option>
-          <option>No, I work from memory</option>
-        </select>
-      </div>
-      <div class="field">
-        <label class="field-label">Expected growth this year <span>(%)</span></label>
-        <input id="s6-crecimiento" class="input" type="number" placeholder="Ex: 20">
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="diag-section" id="s-6">
-  <div class="section-num" style="padding-top:44px;">06 &mdash; Strategic Diagnostic</div>
-  <div class="section-title">What the numbers can&#39;t answer alone.</div>
-  <div class="section-sub" style="margin-bottom:0;">Five questions to understand your barbershop. No right answers &mdash; only yours.</div>
-
-  <div class="diag-block">
-    <div class="diag-step">01</div>
-    <div class="diag-q">What do you think is holding your barbershop back?</div>
-    <div class="diag-hint">Choose the one that feels most real today.</div>
-    <div class="chip-grid" id="d1-chips" style="margin-bottom:9px;">
-      <span class="chip" onclick="toggleChipSingle(this,'d1-chips')">I don&#39;t have enough clients</span>
-      <span class="chip" onclick="toggleChipSingle(this,'d1-chips')">Clients don&#39;t come back</span>
-      <span class="chip" onclick="toggleChipSingle(this,'d1-chips')">Chairs are underutilized</span>
-      <span class="chip" onclick="toggleChipSingle(this,'d1-chips')">My team costs more than it generates</span>
-      <span class="chip" onclick="toggleChipSingle(this,'d1-chips')">I earn well but nothing is left</span>
-      <span class="chip" onclick="toggleChipSingle(this,'d1-chips')">I don&#39;t have clarity on my numbers</span>
-    </div>
-    <div class="chip-open"><span class="chip-open-pre">Other:</span><input class="chip-open-in" id="d1-otro" type="text" placeholder="Describe it in your own words&hellip;"></div>
-  </div>
-
-  <div class="diag-block">
-    <div class="diag-step">02</div>
-    <div class="diag-q">What have you tried to fix it?</div>
-    <div class="diag-hint">Select everything you&#39;ve tried &mdash; even if it didn&#39;t work.</div>
-    <div class="chip-grid" id="dq2-chips">
-      <span class="chip" onclick="toggleChipMulti(this)">Changed prices</span>
-      <span class="chip" onclick="toggleChipMulti(this)">Invested in advertising or social media</span>
-      <span class="chip" onclick="toggleChipMulti(this)">Hired more staff</span>
-      <span class="chip" onclick="toggleChipMulti(this)">Expanded menu</span>
-      <span class="chip" onclick="toggleChipMulti(this)">Reduced costs or expenses</span>
-      <span class="chip" onclick="toggleChipMulti(this)">Sought outside advice</span>
-      <span class="chip" onclick="toggleChipMulti(this)">Nothing yet</span>
-    </div>
-  </div>
-
-  <div class="diag-block">
-    <div class="diag-step">03</div>
-    <div class="diag-q">What was the result?</div>
-    <div class="diag-hint">Be honest &mdash; this helps understand what hasn&#39;t worked and why.</div>
-    <div class="chip-grid" id="dq3-chips">
-      <span class="chip" onclick="toggleChipSingle(this,'dq3-chips')">It worked well, but didn&#39;t last</span>
-      <span class="chip" onclick="toggleChipSingle(this,'dq3-chips')">It worked a little, not enough</span>
-      <span class="chip" onclick="toggleChipSingle(this,'dq3-chips')">It didn&#39;t work</span>
-      <span class="chip" onclick="toggleChipSingle(this,'dq3-chips')">I haven&#39;t tried anything yet</span>
-    </div>
-  </div>
-
-  <div class="diag-block">
-    <div class="diag-step">04</div>
-    <div class="diag-q">How often do your clients return?</div>
-    <div class="diag-hint">A client who returns every 3 weeks is worth twice as much as one who comes every 6.</div>
-    <div class="chip-grid" id="d2-chips">
-      <span class="chip" onclick="toggleChipSingle(this,'d2-chips')">Less than 3 weeks &mdash; high retention</span>
-      <span class="chip" onclick="toggleChipSingle(this,'d2-chips')">Between 3 and 5 weeks &mdash; normal</span>
-      <span class="chip" onclick="toggleChipSingle(this,'d2-chips')">More than 5 weeks &mdash; low retention</span>
-      <span class="chip" onclick="toggleChipSingle(this,'d2-chips')">I don&#39;t know &mdash; I don&#39;t track it</span>
-    </div>
-  </div>
-
-  <div class="diag-block">
-    <div class="diag-step">05</div>
-    <div class="diag-q">How is chair occupancy during your hours?</div>
-    <div class="diag-hint">This defines whether the problem is volume, pricing, or team productivity.</div>
-    <div class="chip-grid" id="d3-chips">
-      <span class="chip" onclick="toggleChipSingle(this,'d3-chips')">Always busy &mdash; no gaps</span>
-      <span class="chip" onclick="toggleChipSingle(this,'d3-chips')">Medium &mdash; some idle hours</span>
-      <span class="chip" onclick="toggleChipSingle(this,'d3-chips')">Only certain days or times</span>
-      <span class="chip" onclick="toggleChipSingle(this,'d3-chips')">Low &mdash; chairs often empty</span>
-    </div>
-  </div>
-
-  <div class="diag-block">
-    <div class="diag-step">06</div>
-    <div class="diag-q">Why do you think your barbershop isn&#39;t where it should be?</div>
-    <div class="diag-hint">This is the most important question. Write the first thing that comes to mind.</div>
-    <textarea class="diag-textarea" id="d4-razon" rows="3" placeholder="Ex: I think the problem is client retention but I don&#39;t know how to fix it&hellip;"></textarea>
-  </div>
-
-  <div class="diag-block">
-    <div class="diag-step">07</div>
-    <div class="diag-q">How much is this affecting you today?</div>
-    <div class="diag-hint">The level of urgency defines how we prioritize your diagnostic.</div>
-    <div class="impact-scale" id="d5-scale">
-      <div class="impact-opt" onclick="pickImpact(this,false)"><div class="impact-bar"><div class="impact-bar-fill" style="width:25%"></div></div><span class="impact-lbl">Annoying but manageable</span></div>
-      <div class="impact-opt" onclick="pickImpact(this,false)"><div class="impact-bar"><div class="impact-bar-fill" style="width:50%"></div></div><span class="impact-lbl">It limits my growth</span></div>
-      <div class="impact-opt" onclick="pickImpact(this,false)"><div class="impact-bar"><div class="impact-bar-fill" style="width:75%"></div></div><span class="impact-lbl">Costing me money constantly</span></div>
-      <div class="impact-opt crit" onclick="pickImpact(this,true)"><div class="impact-bar"><div class="impact-bar-fill" style="width:100%"></div></div><span class="impact-lbl">I feel stuck</span></div>
-    </div>
-  </div>
-
-  <div class="diag-meta-block">
-    <div class="diag-step">Goal</div>
-    <div class="diag-q">If you solved the main problem, what would change?</div>
-    <div class="diag-hint">One line is enough.</div>
-    <textarea class="diag-textarea" id="d6-proyeccion" rows="2" placeholder="Ex: I could stop depending on slow weeks and have consistent revenue every month&hellip;"></textarea>
-  </div>
-
-  <div class="all-done-banner" id="all-done-banner">
-    <p>Form complete &mdash; scroll down to submit</p>
-    <button class="send-btn" onclick="enviarDiagnostico()">Send now</button>
-  </div>
-</div>
-
-<div class="premium">
-  <div class="section-num" style="margin-bottom:14px;">What you receive</div>
-  <div class="section-title" style="margin-bottom:7px;">Your diagnostic.<br><span style="color:var(--dim);font-weight:500;">In less than a week.</span></div>
-  <div class="section-sub" style="margin-bottom:24px;">With this data we build a visual report with <strong style="color:var(--ink);">8 sections</strong> designed so you understand your business in minutes. Every number explained, every problem identified, every solution with estimated dollar impact.</div>
-
-  <div class="premium-score">
-    <div class="premium-score-n" id="score-display">&mdash;</div>
-    <div>
-      <div class="premium-score-title">Financial Health Score (0&ndash;100)</div>
-      <div class="premium-score-desc">A number that summarizes the real state of your business &mdash; with the exact indicators that determine it.</div>
-    </div>
-  </div>
-
-  <div class="section-num" style="margin-bottom:12px;">The 8 sections</div>
-  <div class="deliverables">
-    <div class="deliv"><div class="deliv-accent da-green"></div><div><div class="deliv-name">Cash flow breakdown</div><div class="deliv-note">Of every $100 that comes in, how much goes to labor, supplies, fixed costs &mdash; and what actually remains as profit.</div></div></div>
-    <div class="deliv"><div class="deliv-accent da-green"></div><div><div class="deliv-name">Revenue per chair analysis</div><div class="deliv-note">Which chairs make money, which barely cover cost, and which are silently hurting your margin &mdash; with exact numbers per barber.</div></div></div>
-    <div class="deliv"><div class="deliv-accent da-green"></div><div><div class="deliv-name">Chair occupancy reality</div><div class="deliv-note">Your real productive capacity vs installed capacity. Most barbershops discover they have 30% idle time they don&#39;t see.</div></div></div>
-    <div class="deliv"><div class="deliv-accent da-green"></div><div><div class="deliv-name">Financial leaks detected</div><div class="deliv-note">The costs eating your profit invisibly &mdash; below-potential ticket, team structure gaps, underpriced services.</div></div></div>
-    <div class="deliv"><div class="deliv-accent da-green"></div><div><div class="deliv-name">Exact break-even point</div><div class="deliv-note">How many cuts per day just to break even &mdash; and how close or far you are today.</div></div></div>
-    <div class="deliv"><div class="deliv-accent da-green"></div><div><div class="deliv-name">Scenario: 3 changes, dollar impact</div><div class="deliv-note">What would happen to your profit if you adjust ticket, occupancy, and one pricing lever. Side-by-side in dollars.</div></div></div>
-    <div class="deliv"><div class="deliv-accent da-orange"></div><div><div class="deliv-name">Action plan in order of impact</div><div class="deliv-note">5 concrete moves, ordered by what moves the most money first. Each with estimated monthly dollar impact.</div></div></div>
-    <div class="deliv"><div class="deliv-accent da-blue"></div><div><div class="deliv-name">Strategic interpretation</div><div class="deliv-note">What your numbers reveal about your business &mdash; and the blind spots the analysis detected beyond the data.</div></div></div>
-  </div>
-
-  <div class="guard-banner" id="guard-banner">
-    <div class="guard-title">Before submitting, complete these sections:</div>
-    <div class="guard-list" id="guard-list"></div>
-  </div>
-  </div>
-  <button class="cta-btn" id="cta-btn-main" onclick="enviarDiagnostico()">
-    <span id="cta-btn-text">Submit my barbershop information</span>
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-  </button>
-  <p style="font-size:9px;color:var(--dim);text-align:center;margin-top:12px;">100% confidential</p>
-</div>
-
-
-
-</div>
-
-<div class="send-panel" id="send-panel">
-  <div class="send-panel-inner">
-    <div class="send-panel-head">
-      <h3>How do you want to submit?</h3>
-      <p>Both options deliver the same complete information.</p>
-    </div>
-    <div class="send-panel-body">
-      <button class="send-option" onclick="enviarEmail()">
-        <div class="send-opt-icon soi-email"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--sub)" stroke-width="2.2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg></div>
-        <div><div class="send-opt-title">Send by email</div><div class="send-opt-sub">Opens your email client with everything pre-filled</div></div>
-      </button>
-      <button class="send-option" onclick="copiarYEnviar()">
-        <div class="send-opt-icon soi-copy"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--sub)" stroke-width="2.2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></div>
-        <div><div class="send-opt-title">Copy and send via WhatsApp</div><div class="send-opt-sub">Copy the complete summary to your clipboard</div></div>
-      </button>
-    </div>
-    <button class="send-panel-close" onclick="cerrarPanel()">Cancel &mdash; keep editing</button>
-  </div>
-</div>
-
-<div class="copy-flash" id="copy-flash">Summary copied to clipboard</div>
-
-<div id="confirm-screen">
-  <div class="confirm-inner">
-    <span class="confirm-icon">&#10022;</span>
-    <h2>Diagnostic submitted.</h2>
-    <p class="confirm-negocio" id="confirm-negocio"></p>
-    <p class="confirm-desc">Your information was received. Our team will analyze your numbers and send you a <strong style="color:var(--ink);">complete diagnostic in less than one week.</strong></p>
-    <div class="confirm-list">
-      <div class="confirm-list-title">What&#39;s coming</div>
-      <div class="confirm-item"><div class="confirm-check"><div class="confirm-check-mark"></div></div>Financial Health Score (0&ndash;100)</div>
-      <div class="confirm-item"><div class="confirm-check"><div class="confirm-check-mark"></div></div>Revenue per chair analysis &amp; financial leaks</div>
-      <div class="confirm-item"><div class="confirm-check orange-bg"><div class="confirm-check-mark"></div></div>Action plan with dollar impact</div>
+<!-- CONFIRM -->
+<div id="confirm">
+  <div class="cf">
+    <div class="mono lg">A</div>
+    <h2>Received.</h2>
+    <div class="biz" id="cf-biz"></div>
+    <p>We'll check your numbers, reach out if anything doesn't add up, and send your diagnostic <b style="color:var(--ink)">within one week</b>.</p>
+    <div class="blk">
+      <div class="bh">What happens next</div>
+      <div class="li"><span class="no">1</span><span class="tx">We review the numbers and the checks.</span></div>
+      <div class="li"><span class="no">2</span><span class="tx">You get a private link and an access code.</span></div>
+      <div class="li"><span class="no">3</span><span class="tx">You make one change. We measure it next month.</span></div>
     </div>
   </div>
 </div>
 
 <script>
-// ── CHIPS ──
-function toggleChipSingle(el,groupId){
-  document.getElementById(groupId).querySelectorAll('.chip').forEach(c=>c.classList.remove('on'));
-  el.classList.toggle('on');
-  if(groupId==='s1-esquema-chips'||groupId==='s2-servicios-chips'){markVisited(1);}
-  else if(groupId.startsWith('d')||groupId==='s3-porciones-chips'){markVisited(6);}
-  else{markVisited(1);}
-  checkProgress();
+(function(){
+'use strict';
+var $=function(id){return document.getElementById(id);};
+var MAX_SVC=6, MAX_BAR=5;
+
+// ── PERIOD OPTIONS (last 4 months, default = previous month) ──
+(function(){
+  var sel=$('period'),d=new Date(),M=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var o=document.createElement('option');o.value='';o.textContent='Select…';sel.appendChild(o);
+  for(var i=0;i<=3;i++){
+    var t=new Date(d.getFullYear(),d.getMonth()-i,1),lab=M[t.getMonth()]+' '+t.getFullYear();
+    var op=document.createElement('option');op.textContent=lab;op.value=lab;if(i===1)op.selected=true;sel.appendChild(op);
+  }
+})();
+
+// ── HELPERS ──
+function num(v){if(v==null)return NaN;v=String(v).replace(/[$,\s%]/g,'');if(v==='')return NaN;var n=parseFloat(v);return isFinite(n)?n:NaN;}
+function nv(id){return num($(id).value);}
+function has(id){return !isNaN(nv(id));}
+function txt(id){return clean($(id).value);}
+function clean(s){return String(s||'').replace(/[\r\n]+/g,' ').replace(/\|/g,'/').replace(/·/g,'-').replace(/\s+/g,' ').trim();}
+function fmt(n){return isNaN(n)?'—':String(Math.round(n*100)/100);}
+function money(n){return '$'+Math.round(n).toLocaleString('en-US');}
+function pick(g){var e=document.querySelector('[data-group="'+g+'"] .opt.on');return e?clean(e.textContent):'';}
+function picks(g){return [].map.call(document.querySelectorAll('[data-group="'+g+'"] .opt.on'),function(e){return clean(e.textContent);});}
+
+// ── DYNAMIC ROWS ──
+var SVC_PH=['Haircut','Cut + beard','Beard trim','Fade / design','Kids cut','Shave'];
+function svcRow(i){
+  var d=document.createElement('div');d.className='row svc-row';
+  d.innerHTML='<div class="row-h"><span class="rk">'+(i+1)+'</span><input class="in sv-name" type="text" placeholder="'+(SVC_PH[i]||'Service')+'"></div>'+
+   '<div class="g3"><div class="f"><span class="mini">Price</span><div class="money"><input class="in tn sv-price" type="text" inputmode="decimal" placeholder="0"></div></div>'+
+   '<div class="f"><span class="mini">Per month</span><input class="in tn sv-qty" type="text" inputmode="numeric" placeholder="0"></div>'+
+   '<div class="f"><span class="mini">Minutes</span><input class="in tn sv-min" type="text" inputmode="numeric" placeholder="30"></div></div>';
+  return d;
 }
-function toggleChipMulti(el){el.classList.toggle('on');markVisited(6);checkProgress();}
-function pickImpact(el,isCrit){
-  document.getElementById('d5-scale').querySelectorAll('.impact-opt').forEach(o=>o.classList.remove('on','crit'));
-  el.classList.add('on');
-  if(isCrit)el.classList.add('crit');
-  markVisited(6);checkProgress();
+
+function barRow(i){
+  var d=document.createElement('div');d.className='row bar-row';
+  d.innerHTML='<div class="row-h"><span class="rk">'+(i+1)+'</span><input class="in br-name" type="text" placeholder="'+(i===0?'Name (or “Me”)':'Name')+'"></div>'+
+   '<div class="g2"><div class="f"><span class="mini">Services / month</span><input class="in tn br-qty" type="text" inputmode="numeric" placeholder="0"></div>'+
+   '<div class="f"><span class="mini">Revenue they brought in</span><div class="money"><input class="in tn br-rev" type="text" inputmode="decimal" placeholder="0"></div></div>'+
+   '<div class="f br-comm-f"><span class="mini">Commission paid</span><div class="money"><input class="in tn br-comm" type="text" inputmode="decimal" placeholder="0"></div></div>'+
+   '<div class="f br-fix-f"><span class="mini">Salary / fixed pay</span><div class="money"><input class="in tn br-fix" type="text" inputmode="decimal" placeholder="0"></div></div></div>';
+  return d;
+}
+function addRow(kind){
+  var box=$(kind==='svc'?'svc-rows':'bar-rows'),n=box.children.length,max=kind==='svc'?MAX_SVC:MAX_BAR;
+  if(n>=max)return;
+  box.appendChild(kind==='svc'?svcRow(n):barRow(n));
+  if(box.children.length>=max)$(kind+'-add').style.display='none';
+  applyPay();
+}
+for(var i=0;i<4;i++)addRow('svc');
+for(var j=0;j<2;j++)addRow('bar');
+$('svc-add').onclick=function(){addRow('svc');};
+$('bar-add').onclick=function(){addRow('bar');};
+
+function services(){
+  return [].map.call(document.querySelectorAll('.svc-row'),function(r){
+    return {name:clean(r.querySelector('.sv-name').value),price:num(r.querySelector('.sv-price').value),
+      qty:num(r.querySelector('.sv-qty').value),min:num(r.querySelector('.sv-min').value)};
+  }).filter(function(s){return s.name;});
+}
+function barbers(){
+  var seen={};
+  return [].map.call(document.querySelectorAll('.bar-row'),function(r){
+    return {name:clean(r.querySelector('.br-name').value),qty:num(r.querySelector('.br-qty').value),
+      rev:num(r.querySelector('.br-rev').value),comm:num(r.querySelector('.br-comm').value),fix:num(r.querySelector('.br-fix').value)};
+  }).filter(function(b){if(!b.name||seen[b.name.toLowerCase()])return false;seen[b.name.toLowerCase()]=1;return true;});
 }
 
-const val=id=>document.getElementById(id)?.value?.trim()||'';
+// ── PAY STRUCTURE → which fields show ──
+function applyPay(){
+  var p=pick('paystruct');
+  $('f-rate').hidden=!(p==='Commission'||p==='Mixed');
+  $('f-rent').hidden=p!=='Chair rental';
+  [].forEach.call(document.querySelectorAll('.br-comm-f'),function(e){e.style.display=(p==='Fixed salary'||p==='Chair rental')?'none':'';});
+  [].forEach.call(document.querySelectorAll('.br-fix-f'),function(e){e.style.display=(p==='Commission'||p==='Chair rental')?'none':'';});
+}
 
-function s1Done(){return !!(val('s1-name')&&val('s1-giro')&&val('s1-sillas'));}
-function s2Done(){return !!(val('s2-ventas')&&val('s2-servicios'));}
-function s3Done(){return [...document.querySelectorAll('.prod-name')].some(n=>n.value.trim());}
-function s4Done(){return ['cf-renta','cf-servicios'].some(id=>val(id));}
-function s5Done(){return !!(val('s6-retiro')&&val('s6-meta-personal'));}
-function s6Done(){return !!(document.querySelector('#d1-chips .chip.on')&&val('d4-razon')&&document.querySelector('#d5-scale .impact-opt.on'));}
+// ── OPTION CLICKS ──
+document.addEventListener('click',function(e){
+  var o=e.target.closest('.opt');if(!o)return;
+  var g=o.closest('[data-group]');if(!g)return;
+  if(g.hasAttribute('data-single')){
+    var was=o.classList.contains('on');
+    [].forEach.call(g.querySelectorAll('.opt'),function(x){x.classList.remove('on');});
+    if(!was)o.classList.add('on');
+  }else{
+    o.classList.toggle('on');
+    if(o.hasAttribute('data-none')&&o.classList.contains('on'))[].forEach.call(g.querySelectorAll('.opt:not([data-none])'),function(x){x.classList.remove('on');});
+    if(!o.hasAttribute('data-none'))(g.querySelector('[data-none]')||{classList:{remove:function(){}}}).classList.remove('on');
+  }
+  var sec=o.closest('.sec');if(sec)sec.dataset.seen='1';
+  refresh();
+});
+document.addEventListener('input',function(e){var s=e.target.closest('.sec');if(s)s.dataset.seen='1';refresh();});
+document.addEventListener('change',function(e){var s=e.target.closest('.sec');if(s)s.dataset.seen='1';refresh();});
 
-const SC=[null,s1Done,s2Done,s3Done,s4Done,s5Done,s6Done];
-const SN=[null,
-  'Barbershop — name, type and active chairs',
-  'Revenue — total sales and services performed',
-  'Team — at least 1 barber with revenue and cost',
-  'Fixed expenses — rent or utilities',
-  'Goals — current withdrawal and personal goal',
-  'Diagnostic — main obstacle, explanation and impact level'
+// ── CROSS-CHECKS (shown to the client, and sent to Acly) ──
+function checks(){
+  var out={lines:[]},rev=nv('rev'),svc=nv('svc'),S=services(),B=barbers();
+  var sRev=0,sQty=0,okS=0;S.forEach(function(s){if(!isNaN(s.price)&&!isNaN(s.qty)){sRev+=s.price*s.qty;sQty+=s.qty;okS++;}});
+  out.sRev=sRev;out.sQty=sQty;
+  var svcRev=rev-(has('retail')?nv('retail'):0);out.svcRev=svcRev;
+  if(okS&&svcRev>0){
+    var pct=sRev/svcRev;out.sPct=pct;
+    out.lines.push('Services listed add up to: $'+Math.round(sRev)+' ('+Math.round(pct*100)+'% of service revenue, retail excluded)');
+    if(!isNaN(svc)&&svc>0)out.lines.push('Services listed count: '+Math.round(sQty)+' of '+Math.round(svc)+' reported');
+  }
+  var bRev=0,okB=0,comm=0,fix=0;B.forEach(function(b){if(!isNaN(b.rev)){bRev+=b.rev;okB++;}if(!isNaN(b.comm))comm+=b.comm;if(!isNaN(b.fix))fix+=b.fix;});
+  out.bRev=bRev;out.comm=comm;out.fix=fix;
+  if(okB&&rev>0&&pick('paystruct')!=='Chair rental'){out.bPct=bRev/rev;out.lines.push('Team revenue adds up to: $'+Math.round(bRev)+' ('+Math.round(bRev/rev*100)+'% of reported revenue)');}
+  var rate=nv('rate');
+  if(!isNaN(rate)&&bRev>0&&comm>0){var eff=comm/bRev;out.lines.push('Commission paid vs rate: '+Math.round(eff*100)+'% effective vs '+Math.round(rate)+'% stated');}
+  if(has('uniq')&&has('newc')&&nv('newc')>nv('uniq'))out.lines.push('ERROR first-time clients exceed different clients');
+  return out;
+}
+
+function renderChecks(c){
+  var el=$('chk-svc');
+  if(c.sPct!=null){
+    var off=Math.abs(1-c.sPct)>0.2;
+    el.className='chk show'+(off?' warn':'');
+    el.innerHTML='Your services add up to <b class="tn">'+money(c.sRev)+'</b> — <b class="tn'+(off?' x':'')+'">'+Math.round(c.sPct*100)+'%</b> of the '+money(c.svcRev)+' you reported'+(has('retail')?' for services (after product sales).':'.')+(off?' If you have services not listed, add them; otherwise check prices or counts.':'');
+  }else el.className='chk';
+  var eb=$('chk-bar');
+  if(c.bPct!=null){
+    var offb=Math.abs(1-c.bPct)>0.2;
+    eb.className='chk show'+(offb?' warn':'');
+    eb.innerHTML='Your team brought in <b class="tn">'+money(c.bRev)+'</b> — <b class="tn'+(offb?' x':'')+'">'+Math.round(c.bPct*100)+'%</b> of reported revenue.'+(offb?' Add any missing barber, or check the amounts.':'');
+  }else eb.className='chk';
+  $('err-newc').className='err'+(has('uniq')&&has('newc')&&nv('newc')>nv('uniq')?' show':'');
+}
+
+// ── COMPLETION RULES ──
+var RULES=[
+  [function(){return txt('name')&&$('period').value&&has('chairs')&&$('days').value&&has('hours')&&(txt('phone').replace(/\D/g,'').length>=10||/.+@.+\..+/.test(txt('email')));},'Barbershop — name, month, chairs, days, hours, and a phone or email'],
+  [function(){return has('rev')&&has('svc')&&!(has('uniq')&&has('newc')&&nv('newc')>nv('uniq'));},'Revenue — total revenue and services performed'],
+  [function(){return services().some(function(s){return !isNaN(s.price)&&!isNaN(s.qty);})&&pick('lastraise');},'Services — at least one service with price and monthly count, and your last price increase'],
+  [function(){var p=pick('paystruct');if(!p)return false;if((p==='Commission'||p==='Mixed')&&!has('rate'))return false;if(p==='Chair rental')return has('chairrent');return barbers().some(function(b){return !isNaN(b.rev);});},'Team — pay structure and at least one barber with revenue'],
+  [function(){return ['cf-rent','cf-util','cf-soft','cf-mkt','cf-acct','cf-mant','cf-ins','cf-fin','cf-oth'].some(has);},'Fixed costs — at least rent or utilities'],
+  [function(){return has('draw')&&has('need')&&pick('tracks');},'You — what you take home, what you need, and where the numbers came from'],
+  [function(){return pick('feel')&&(pick('obstacle')||txt('obstacle-other'))&&pick('impact');},'Your read — how the month felt, main obstacle and impact']
 ];
 
-// ── SCORE ANIMADO ──
-let scoreTarget=0,scoreAnim=null;
-function actualizarScore(doneCount){
-  const targets=[0,12,24,38,52,64,88];
-  const target=targets[doneCount]||0;
-  if(target===scoreTarget)return;
-  scoreTarget=target;
-  const el=document.getElementById('score-display');
-  if(!el)return;
-  if(scoreAnim)cancelAnimationFrame(scoreAnim);
-  const start=parseInt(el.textContent)||0;
-  const startTime=performance.now();
-  const duration=800;
-  function step(now){
-    const t=Math.min((now-startTime)/duration,1);
-    const ease=1-Math.pow(1-t,3);
-    const current=Math.round(start+(target-start)*ease);
-    el.textContent=current>0?current:'—';
-    if(t<1)scoreAnim=requestAnimationFrame(step);
-  }
-  scoreAnim=requestAnimationFrame(step);
-}
-
-function checkProgress(){
-  let doneCount=0,allDone=true;
-  for(let i=1;i<=6;i++){
-    const bar=document.getElementById('pbar-'+i);
-    const lbl=document.getElementById('plbl-'+i);
-    const step=document.getElementById('s-'+i);
-    if(!bar)continue;
-    const done=SC[i]();
-    if(!done)allDone=false;else doneCount++;
-    bar.classList.remove('visited','done','all-done');
-    lbl.classList.remove('active','done','all-done');
-    if(done){bar.classList.add('done');lbl.classList.add('done');}
-    else if(step?.dataset.visited){bar.classList.add('visited');lbl.classList.add('active');}
-  }
-  const counter=document.getElementById('prog-counter');
-  if(counter){counter.textContent=doneCount+'/6';counter.classList.toggle('active',doneCount>0);}
-  if(allDone){
-    for(let i=1;i<=6;i++){
-      document.getElementById('pbar-'+i)?.classList.replace('done','all-done')||document.getElementById('pbar-'+i)?.classList.add('all-done');
-      document.getElementById('plbl-'+i)?.classList.replace('done','all-done')||document.getElementById('plbl-'+i)?.classList.add('all-done');
-    }
-    document.getElementById('all-done-banner').classList.add('show');
-  }else{
-    document.getElementById('all-done-banner').classList.remove('show');
-  }
-  document.getElementById('nav-status').textContent=doneCount>0?doneCount+'/6 complete':'Barbershop X-Ray';
-  const nombre=val('s1-name');
-  const ctaText=document.getElementById('cta-btn-text');
-  if(ctaText)ctaText.textContent=nombre?'Submit diagnostic for '+nombre:'Submit my barbershop information';
-  actualizarScore(doneCount);
-}
-
-function markVisited(n){const el=document.getElementById('s-'+n);if(el)el.dataset.visited='1';}
-
-function validateBeforeSend(){
-  const faltantes=[];
-  for(let i=1;i<=6;i++){if(!SC[i]())faltantes.push({n:i,label:SN[i]});}
-  const banner=document.getElementById('guard-banner');
-  const list=document.getElementById('guard-list');
-  if(faltantes.length===0){banner.classList.remove('show');return true;}
-  list.innerHTML=faltantes.map(f=>`<div class="guard-item" onclick="scrollToSection(${f.n})"><span class="guard-dot"></span>Section ${f.n}: ${f.label}</div>`).join('');
-  banner.classList.add('show');
-  banner.scrollIntoView({behavior:'smooth',block:'center'});
-  return false;
-}
-
-function scrollToSection(n){const el=document.getElementById('s-'+n);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});}
-function abrirPanel(){if(!validateBeforeSend())return;document.getElementById('send-panel').classList.add('show');}
-function cerrarPanel(){document.getElementById('send-panel').classList.remove('show');}
-
-function recolectarDatos(){
-  const v=id=>val(id)||'—';
-  const cv=id=>document.getElementById(id)?.querySelector('.chip.on')?.textContent.trim()||'—';
-  const names=[...document.querySelectorAll('.prod-name')].map(e=>e.value.trim());
-  const qtys=[...document.querySelectorAll('.prod-qty')].map(e=>e.value.trim());
-  const revenues=[...document.querySelectorAll('.prod-price')].map(e=>e.value.trim());
-  const costs=[...document.querySelectorAll('.prod-cost')].map(e=>e.value.trim());
-  const seen=new Set(); let equipo='';
-  names.forEach((n,i)=>{if(!n||seen.has(n))return;seen.add(n);
-    equipo+='  · '+n+' | Cuts: '+qtys[i]+' | Revenue: $'+revenues[i]+' | Cost: $'+costs[i]+'\n';
+function refresh(){
+  applyPay();
+  $('f-othdesc').hidden=!has('cf-oth')||nv('cf-oth')<=0;
+  var tried=picks('tried');$('f-result').style.display=(tried.length&&tried.indexOf('Nothing yet')<0)?'':'none';
+  var c=checks();renderChecks(c);
+  var done=0,track=$('ptrack');
+  RULES.forEach(function(r,i){
+    var ok=!!r[0](),seg=track.children[i],sec=$('s-'+(i+1));
+    seg.className='pseg'+(ok?' done':(sec.dataset.seen?' seen':''));if(ok)done++;
   });
-  const imp=document.querySelector('#d5-scale .impact-opt.on .impact-lbl')?.textContent.trim()||'—';
-  const intentos=[...document.querySelectorAll('#dq2-chips .chip.on')].map(e=>e.textContent.trim()).join(', ')||'—';
-  const resultado=document.querySelector('#dq3-chips .chip.on')?.textContent.trim()||'—';
-  return 'FINANCIAL X-RAY · BARBERSHOP — ACLY\n'+'='.repeat(50)+'\n\n'+
-    '1. BARBERSHOP\n  Name: '+v('s1-name')+' | Type: '+v('s1-giro')+'\n'+
-    '  Chairs: '+v('s1-sillas')+' | Days/week: '+v('s1-dias')+' | Hours/day: '+v('s1-horas')+'\n'+
-    '  Time in operation: '+v('s1-tiempo')+' | Payment structure: '+cv('s1-esquema-chips')+'\n\n'+
-    '2. REVENUE\n  Monthly total: $'+v('s2-ventas')+' | Services: '+v('s2-servicios')+'\n'+
-    '  Unique customers: '+v('s2-clientes')+' | New: '+v('s2-nuevos')+'\n'+
-    '  Avg price: $'+v('s2-ticket')+' | Service mix: '+cv('s2-servicios-chips')+'\n\n'+
-    '3. TEAM\n'+(equipo||'  No data\n')+'  Supplies/products: $'+v('s3-insumos')+'\n\n'+
-    '4. FIXED EXPENSES\n  Rent: $'+v('cf-renta')+' | Utilities: $'+v('cf-servicios')+'\n'+
-    '  Marketing: $'+v('cf-marketing')+' | Maintenance: $'+v('cf-mantenimiento')+'\n'+
-    '  Subscriptions: $'+v('cf-suscripciones')+' | Financing: $'+v('cf-financiamiento')+'\n\n'+
-    '5. GOALS\n  Current withdrawal: $'+v('s6-retiro')+' | Personal goal: $'+v('s6-meta-personal')+'\n'+
-    '  Desired profit: $'+v('s6-meta-negocio')+' | Growth: '+v('s6-crecimiento')+'%\n  Tracks numbers: '+v('s6-registro')+'\n\n'+
-    '6. DIAGNOSTIC\n  Freno: '+cv('d1-chips')+(val('d1-otro')?' / '+val('d1-otro'):'')+
-    '\n  What they\'ve tried: '+intentos+'\n  Result: '+resultado+'\n'+
-    '  Client retention: '+cv('d2-chips')+' | Chair occupancy: '+cv('d3-chips')+'\n'+
-    '  Why not where it should be: '+v('d4-razon')+'\n  Impact level: '+imp+'\n  If resolved: '+v('d6-proyeccion')+'\n\n'+
-    '='.repeat(50);
+  $('pcount').textContent=done;
+  var n=txt('name');$('cta').textContent=n?'Submit numbers for '+n:'Submit my numbers';
+  if($('guard').classList.contains('show'))guard();
+}
+RULES.forEach(function(){var s=document.createElement('div');s.className='pseg';$('ptrack').appendChild(s);});
+
+// progress label follows scroll
+var secs=[].slice.call(document.querySelectorAll('.sec'));
+function onScroll(){var cur=secs[0];secs.forEach(function(s){if(s.getBoundingClientRect().top<120)cur=s;});$('plabel').textContent=cur.dataset.name;}
+window.addEventListener('scroll',onScroll,{passive:true});
+
+// ── GUARD ──
+function guard(){
+  var miss=[];RULES.forEach(function(r,i){if(!r[0]())miss.push(i);});
+  var g=$('guard');
+  if(!miss.length){g.classList.remove('show');return true;}
+  $('guard-list').innerHTML=miss.map(function(i){return '<a data-go="'+(i+1)+'">'+(i+1<10?'0':'')+(i+1)+' · '+RULES[i][1]+' ›</a>';}).join('');
+  g.classList.add('show');return false;
+}
+$('guard-list').addEventListener('click',function(e){var a=e.target.closest('[data-go]');if(a)$('s-'+a.dataset.go).scrollIntoView({behavior:'smooth'});});
+
+// ── OUTPUT TEXT (parsed by 00-PEGAR — keep keys exact) ──
+function collect(){
+  var v=function(id){var n=nv(id);return isNaN(n)?'—':fmt(n);};
+  var t=function(id){return txt(id)||'—';};
+  var c=checks(),S=services(),B=barbers(),p=pick('paystruct');
+  var L=[];
+  L.push('FINANCIAL X-RAY · BARBERSHOP — ACLY');L.push('='.repeat(50));L.push('');
+  L.push('0. PERIOD');
+  L.push('  Period: '+($('period').value||'—')+' | Submitted: '+new Date().toISOString().slice(0,10));
+  L.push('  Owner: '+t('owner')+' | Phone: '+t('phone')+' | Email: '+t('email'));L.push('');
+  L.push('1. BARBERSHOP');
+  L.push('  Name: '+t('name')+' | Type: '+($('type').value||'—'));
+  L.push('  Chairs: '+v('chairs')+' | Days/week: '+($('days').value?$('days').value+' days':'—')+' | Hours/day: '+v('hours'));
+  L.push('  Time in operation: '+($('age').value||'—')+' | Payment structure: '+(p||'—'));L.push('');
+  L.push('2. REVENUE');
+  L.push('  Monthly total: $'+v('rev')+' | Services: '+v('svc'));
+  L.push('  Unique customers: '+v('uniq')+' | New: '+v('newc'));
+  L.push('  Retail sales: $'+v('retail')+' | Card fees: $'+v('cardfees'));L.push('');
+  L.push('2B. SERVICES');
+  if(!S.length)L.push('  No services listed');
+  S.forEach(function(s,i){L.push('  S'+(i+1)+': '+s.name+' | Price: $'+fmt(s.price)+' | Qty: '+fmt(s.qty)+' | Minutes: '+fmt(s.min));});
+  L.push('  Last price increase: '+(pick('lastraise')||'—')+' | Prices shown on: '+(picks('priceshown').join(', ')||'—')+' | Competitor cut price: $'+v('comp'));L.push('');
+  L.push('3. TEAM');
+  L.push('  Commission rate: '+(has('rate')?fmt(nv('rate'))+'%':'—')+' | Chair rent collected: $'+v('chairrent'));
+  B.forEach(function(b){
+    var cost=(isNaN(b.comm)?0:b.comm)+(isNaN(b.fix)?0:b.fix);
+    L.push('  · '+b.name+' | Cuts: '+fmt(b.qty)+' | Revenue: $'+fmt(b.rev)+' | Cost: $'+fmt(cost)+' | Commission: $'+fmt(isNaN(b.comm)?0:b.comm)+' | Fixed: $'+fmt(isNaN(b.fix)?0:b.fix));
+  });
+  if(!B.length)L.push('  No barbers listed');
+  L.push('  Team commissions total: $'+fmt(c.comm)+' | Team fixed pay total: $'+fmt(c.fix));
+  L.push('  Supplies/products: $'+v('supplies'));L.push('');
+  L.push('4. FIXED EXPENSES');
+  L.push('  Rent: $'+v('cf-rent')+' | Utilities: $'+v('cf-util'));
+  L.push('  Marketing: $'+v('cf-mkt')+' | Maintenance: $'+v('cf-mant'));
+  L.push('  Subscriptions: $'+v('cf-soft')+' | Financing: $'+v('cf-fin'));
+  L.push('  Accounting: $'+v('cf-acct')+' | Insurance: $'+v('cf-ins')+' | Other fixed: $'+v('cf-oth')+(txt('cf-othdesc')?' ('+txt('cf-othdesc')+')':''));L.push('');
+  L.push('5. OWNER');
+  L.push('  Current withdrawal: $'+v('draw')+' | Personal goal: $'+v('need'));
+  L.push('  Numbers source: '+(pick('tracks')||'—'));L.push('');
+  L.push('6. DIAGNOSTIC');
+  L.push('  Month felt: '+(pick('feel')||'—'));
+  L.push('  In their words: '+t('words'));
+  L.push('  Main obstacle: '+([pick('obstacle'),txt('obstacle-other')].filter(Boolean).join(' / ')||'—'));
+  L.push("  What they've tried: "+(picks('tried').join(', ')||'—'));
+  L.push('  Result: '+(pick('result')||'—'));
+  L.push('  Client retention: '+(pick('retention')||'—')+' | Occupancy: '+(pick('occupancy')||'—'));
+  L.push('  Why not growing: '+t('why'));
+  L.push('  Impact level: '+(pick('impact')||'—'));
+  L.push('  If resolved: '+t('ifsolved'));L.push('');
+  L.push('7. DATA CHECKS');
+  if(!c.lines.length)L.push('  Not enough data to cross-check');
+  c.lines.forEach(function(l){L.push('  '+l);});
+  L.push('');L.push('='.repeat(50));
+  return L.join('\n');
 }
 
-function mostrarConfirmacion(){
-  const n=val('s1-name')||'Your barbershop';
-  const e=document.getElementById('confirm-negocio');if(e)e.textContent=n;
-  document.querySelector('.page').style.display='none';
-  document.getElementById('confirm-screen').style.display='flex';
-  cerrarPanel();
+function extras(){
+  return {nombre:txt('name')||'—',
+    freno:[pick('obstacle'),txt('obstacle-other')].filter(Boolean).join(' / ')||'—',
+    intentado:picks('tried').join(', ')||'—',
+    resultado:pick('result')||'—'};
 }
+
+// ── SEND FLOW ──
+$('cta').onclick=function(){if(!guard()){$('guard').scrollIntoView({behavior:'smooth',block:'center'});return;}$('send').classList.add('show');};
+$('send-x').onclick=function(){$('send').classList.remove('show');};
+$('send').addEventListener('click',function(e){if(e.target===this)this.classList.remove('show');});
+var sent=false;
+function submit(){if(sent)return false;sent=true;var x=extras();enviarWebhook(collect(),'Barberia',x);return true;}
+function confirmScreen(){$('cf-biz').textContent=txt('name');$('send').classList.remove('show');$('page').style.display='none';$('confirm').classList.add('show');window.scrollTo(0,0);}
+$('send-direct').onclick=function(){if(submit())setTimeout(confirmScreen,600);};
+$('send-copy').onclick=function(){
+  var text=collect();submit();
+  var done=function(){$('flash').classList.add('show');setTimeout(function(){$('flash').classList.remove('show');confirmScreen();},1800);};
+  if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(text).then(done,function(){fallbackCopy(text);done();});}
+  else{fallbackCopy(text);done();}
+};
+function fallbackCopy(t){var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();try{document.execCommand('copy');}catch(e){}document.body.removeChild(a);}
+
+window.__acly={collect:collect,checks:checks,rules:RULES};
+refresh();
+})();
 
 // ── INTOCABLE ──
 function enviarWebhook(datos, sector, extraFields) {
@@ -918,68 +755,6 @@ function enviarWebhook(datos, sector, extraFields) {
   setTimeout(function(){ document.body.removeChild(iframe); }, 3000);
   return Promise.resolve(true);
 }
-
-function enviarEmail(){
-  const datos=recolectarDatos();
-  const nombre=val('s1-name')||'—';
-  const freno=document.querySelector('#d1-chips .chip.on')?.textContent.trim()||val('d1-otro')||'—';
-  const intentado=[...document.querySelectorAll('#dq2-chips .chip.on')].map(e=>e.textContent.trim()).join(', ')||'—';
-  const resultado=document.querySelector('#dq3-chips .chip.on')?.textContent.trim()||'—';
-  enviarWebhook(datos,'Barberia',{nombre,freno,intentado,resultado}).then(()=>mostrarConfirmacion());
-}
-
-function copiarYEnviar(){
-  const texto=recolectarDatos();
-  const nombre=val('s1-name')||'—';
-  const freno=document.querySelector('#d1-chips .chip.on')?.textContent.trim()||val('d1-otro')||'—';
-  const intentado=[...document.querySelectorAll('#dq2-chips .chip.on')].map(e=>e.textContent.trim()).join(', ')||'—';
-  const resultado=document.querySelector('#dq3-chips .chip.on')?.textContent.trim()||'—';
-  enviarWebhook(texto,'Barberia',{nombre,freno,intentado,resultado});
-  navigator.clipboard.writeText(texto).then(()=>{
-    const flash=document.getElementById('copy-flash');
-    flash.classList.add('show');setTimeout(()=>flash.classList.remove('show'),2800);
-    cerrarPanel();setTimeout(mostrarConfirmacion,3200);
-  }).catch(()=>{
-    const ta=document.createElement('textarea');ta.value=texto;ta.style.position='fixed';ta.style.opacity='0';
-    document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);
-    const flash=document.getElementById('copy-flash');
-    flash.classList.add('show');setTimeout(()=>flash.classList.remove('show'),2800);
-    cerrarPanel();setTimeout(mostrarConfirmacion,3200);
-  });
-}
-
-function enviarDiagnostico(){abrirPanel();}
-
-document.addEventListener('click',e=>{
-  const panel=document.getElementById('send-panel');
-  if(panel?.classList.contains('show')&&e.target===panel)cerrarPanel();
-});
-
-document.addEventListener('DOMContentLoaded',()=>{
-  ['s1-name','s1-giro','s1-sillas','s1-dias','s1-horas','s1-tiempo'].forEach(id=>{
-    const el=document.getElementById(id);if(!el)return;
-    el.addEventListener('input',()=>{markVisited(1);checkProgress();});
-    el.addEventListener('change',()=>{markVisited(1);checkProgress();});
-  });
-  ['s2-ventas','s2-servicios','s2-clientes','s2-nuevos','s2-ticket'].forEach(id=>{
-    const el=document.getElementById(id);if(el)el.addEventListener('input',()=>{markVisited(2);checkProgress();});
-  });
-  document.querySelectorAll('.prod-name,.prod-price,.prod-cost,.prod-qty').forEach(el=>{
-    el.addEventListener('input',()=>{markVisited(3);checkProgress();});
-  });
-  document.getElementById('s3-insumos')?.addEventListener('input',()=>{markVisited(3);checkProgress();});
-  ['cf-renta','cf-servicios','cf-marketing','cf-mantenimiento','cf-suscripciones','cf-financiamiento','cf-otros-desc','cf-otros-val'].forEach(id=>{
-    const el=document.getElementById(id);if(el)el.addEventListener('input',()=>{markVisited(4);checkProgress();});
-  });
-  ['s6-retiro','s6-meta-personal','s6-meta-negocio','s6-crecimiento','s6-registro'].forEach(id=>{
-    const el=document.getElementById(id);if(!el)return;
-    el.addEventListener('input',()=>{markVisited(5);checkProgress();});
-    el.addEventListener('change',()=>{markVisited(5);checkProgress();});
-  });
-  ['d1-otro','d4-razon','d6-proyeccion'].forEach(id=>{
-    const el=document.getElementById(id);if(el)el.addEventListener('input',()=>{markVisited(6);checkProgress();});
-  });
-});
 </script>
 </body>
 </html>
